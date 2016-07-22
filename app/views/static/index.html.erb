@@ -1,42 +1,7 @@
-<h2> Borrow A Bash</h2>
 
 <p>
   Do you need to borrow something for a party?
   Look no further!
 </p>
 
-<% if user_signed_in? %>
 
-  <h3> Welcome! <%= current_user.email %>. </h3>
-
-  <ul>
-    <li>
-      <a href="/users/edit">
-        Edit
-      </a>
-    </li>
-
-    <li>
-      <a href="/users/sign_out" data-method="delete">
-        Log out
-      </a>
-    </li>
-  </ul>
-
-<% else %>
-
-  <ul>
-    <li>
-      <a href="/users/sign_in">
-        Log in
-      </a>
-    </li>
-
-    <li>
-      <a href="/users/sign_up">
-        Sign up
-      </a>
-    </li>
-  </ul>
-
-<% end %>
