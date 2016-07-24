@@ -5,25 +5,37 @@
 	<div class = "col-md-4">
 		</div>
 	<div class = "col-md-4">
+		<div class = "menu-options">
+			
+				<% if user_signed_in? %>
+				<div class = "menu-option">
+      			<button type="button" class="btn header-btn">
+      			<i class="material-icons md-36">bubble_chart</i>
+      			<br>Your items
+				</button></div>
+				<div class = "menu-option">
+					<div class = "dropdown">
+	      			<button class="btn header-btn dropdown-toggle" type="button" data-toggle="dropdown"> <i class="material-icons md-36">account_circle</i><br>
+	       			 Welcome, <%= current_user.username %>  <span class="caret"></span>
+	      			</button>
+					<ul class="dropdown-menu">
+	      				<li><a href="/users/edit">My Profile</a></li>
+	      				<li><a href="/users/sign_out" data-method="delete">Sign Out</a></li>
+	    			</ul>
+				</div>
 
-
-	<% if user_signed_in? %>
-  		<h3> Welcome, <%= current_user.username %>! </h3>
-  		 <a href="/users/sign_out" data-method="delete">
-        Log out
-      </a>
-	<% else %>
-
-	<div class = "col-md-4">
-      <button class = "js-register">
-        Register
-      </button></div>
-	
-	<div class = "col-md-4">
-      <button class = "js-login">
-        Sign in
-      </button></div>
-
-	<% end %>
+		</div>
+		<% else %>
+		<div class = "menu-option">
+      		<button class = "btn header-btn register js-register"> Register</button></div>
+		<div class = "menu-option">
+      		<button class = "btn header-btn login js-login">Sign in</button></div>
+      	<% end %>
+		<div class = "menu-option">
+      <button type="button" class="btn header-btn">
+      <i class="material-icons md-36">shopping_cart</i>
+      <br>Cart
+	</button></div>
 	</div>
+</div>
 </div>

@@ -12,12 +12,14 @@
  *
  *= require_tree .
  *= require_self
+ *= require material_icons
  */
+html{
+	font-family: Verdana, Helvetica, sans-serif;
 
-
-.footer{
-	text-align: center;
 }
-.header{
-	height: 100px;
+
+.main-content{
+	display: inline-block;
+	width: 100%;
 }

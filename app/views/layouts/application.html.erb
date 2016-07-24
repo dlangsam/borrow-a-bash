@@ -9,14 +9,15 @@
   </head>
 
   <body>
-  	<%= render("shared/header") %>
-    <%= yield %>
-  
-  <div class = "footer"><h4> Made with <span>&hearts;</span> by Devorah </h4></div>
-  	<%= render("shared/login_modal") %>
-  	  	<%= render("shared/register_modal") %>
-  
+  	<div class="container-fluid" >
+  		<%= render("shared/header") %>
+    	<%= yield %>
+  		<%= render("shared/footer")%>
 
+  		<%= render("shared/login_modal") %>
+  	  	<%= render("shared/register_modal") %>
+ 	</div> 
+  </body>
 
 
 

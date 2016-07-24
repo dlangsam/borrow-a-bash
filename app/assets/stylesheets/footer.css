@@ -1,0 +1,11 @@
+#footer{
+	width: 100%;
+	text-align: center;
+    position: fixed;
+    bottom: 0;
+    color: black; /*#e18def;*/ 
+    background-color: gray;
+}
+#footer span{
+	color: #e18def;
+}
