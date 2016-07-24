@@ -5,7 +5,12 @@
     bottom: 0;
     color: black; /*#e18def;*/ 
     background-color: gray;
+    background-image: url("glitter.jpg");
+    margin: 10px 0 0;
+
 }
 #footer span{
-	color: #e18def;
+	color: #ff6699;
+
+
 }

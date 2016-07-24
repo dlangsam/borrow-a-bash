@@ -5,9 +5,11 @@
 	width: 100%;
 	background-size: cover;
 	color: black;
-	background-color: gray;
 	margin: 0px;
 
+}
+.header-logo{
+	height: 80px;
 }
 
 .menu-options div{
@@ -21,10 +23,13 @@
 
 .header-btn{
 	border-style: none;
-	background-color: gray;
+	background-color: white;
 	height: 80px;
 }
 
 .btn.register, .btn.login {
 	font-size: 16px;
+}
+.header .material-icons{
+	color: #3399cc;
 }
