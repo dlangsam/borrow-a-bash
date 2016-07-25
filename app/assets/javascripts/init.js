@@ -33,11 +33,11 @@ $(document).on("ready", function(){
 		<li> Longitude: ${lng} </li>
 		</ul>`;
 
-		mapURL = `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&size=640x400&zoom=15`
-		img = `<img src = ${mapURL}>`
+		/*mapURL = `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&size=640x400&zoom=15`
+		img = `<img src = ${mapURL}>`*/
 
 		$("body").append(html);
-		$("body").append(img);
+		/*$("body").append(img);*/
 
 	}
 	function handleError(error){
