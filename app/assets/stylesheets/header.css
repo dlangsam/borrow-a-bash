@@ -9,6 +9,8 @@
 
 }
 .header-logo{
+	position: absolute;
+	left: 0;
 	height: 80px;
 }
 
@@ -25,6 +27,13 @@
 	border-style: none;
 	background-color: white;
 	height: 80px;
+}
+.btn.login{
+	border-style: solid;
+	border-color: #009933;
+	border-width: 2px;
+	height: 40px;
+	margin: 20px 0;
 }
 
 .btn.register, .btn.login {

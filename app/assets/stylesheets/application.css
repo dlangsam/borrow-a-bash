@@ -14,12 +14,18 @@
  *= require_self
  *= require material_icons
  */
-html{
+html, p, div{
 	font-family: Verdana, Helvetica, sans-serif;
 
+}
+h1, h2, h3, h4, h5, h6{
+	font-family: Lao MN, Helvetica, sans-serif;
 }
 
 .main-content{
 	display: inline-block;
 	width: 100%;
+	overflow: scroll;
+	height: 100vh;
+
 }

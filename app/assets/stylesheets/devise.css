@@ -1,0 +1,10 @@
+.edit-profile{
+	position: relative;
+	left: 40px;
+}
+
+.btn-form{
+	border-radius: 5px;
+	margin: 2px;
+	background-color: #3399cc;
+}
