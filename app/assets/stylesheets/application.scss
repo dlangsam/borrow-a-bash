@@ -14,6 +14,11 @@
  *= require_self
  *= require material_icons
  */
+
+$party-pink: #ff6699;
+$celebration-blue: #3399cc;
+$happy-green: #009933;
+
 html, p, div{
 	font-family: Verdana, Helvetica, sans-serif;
 
@@ -31,7 +36,7 @@ h1, h2, h3, h4, h5, h6{
 }
 .btn-blue{
 	border-style: solid;
-	border-color: #3399cc;
+	border-color: $celebration-blue;
 	border-width: 2px;
 	height: 40px;
 	margin: 20px 0;

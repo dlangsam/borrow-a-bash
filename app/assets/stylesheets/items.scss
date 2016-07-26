@@ -1,3 +1,40 @@
 // Place all the styles related to the items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.user-item{
+	display: inline-block;
+	border-width: 2px;
+	border-color: #ff6699;
+	border-style: solid;
+	width: 33%;
+	height: 300px;
+	border-radius: 5px;
+	position: relative;
+	float: left;
+	margin: 1px;
+
+
+}
+
+.item-box{
+	
+	
+
+}
+.item-box > p {
+	color: black;
+	padding: 3px;
+
+}
+
+.new-item-input {
+	position: relative;
+	left: 30px;
+	width:60%;
+	border: solid 2px;
+	margin: 5px;
+
+}
+.item-name{
+	margin-left: 49px;
+}
