@@ -23,10 +23,15 @@
 	right: 0px;
 }
 
+
 .header-btn{
 	border-style: none;
 	background-color: white;
 	height: 80px;
+}
+a.header-btn{
+	margin: 4px;
+	color: black;
 }
 .btn.login{
 	border-style: solid;

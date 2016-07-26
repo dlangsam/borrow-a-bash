@@ -1,0 +1,4 @@
+class UsersApiController < ApplicationController
+
+
+end

@@ -9,14 +9,11 @@
 			
 				<% if user_signed_in? %>
 				<div class = "menu-option">
-				<%=link_to 'Your items', user_items_url(current_user.id)%>
-				</div>
-				<div class = "menu-option">
 			
-      			<a href = "/user/<%=current_user.id%>/items"> <button type="button" class="btn header-btn">
+      			<a href = "<%= user_items_url(current_user.id) %>" class="btn header-btn">
       			<i class="material-icons md-36">bubble_chart</i>
-      			<br>Your items
-				</button></a>
+      			<br><span>Your items</span>
+				</a>
 				</div>
 				<div class = "menu-option">
 					<div class = "dropdown">
