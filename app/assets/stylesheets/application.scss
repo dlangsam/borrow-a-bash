@@ -15,9 +15,7 @@
  *= require material_icons
  */
 
-$party-pink: #ff6699;
-$celebration-blue: #3399cc;
-$happy-green: #009933;
+@import 'config';
 
 html, p, div{
 	font-family: Verdana, Helvetica, sans-serif;

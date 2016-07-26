@@ -5,7 +5,7 @@ class ItemsApiController < ApplicationController
 		if item.save
 			render json: item
 		else
-			render status: 400, json: {error: "you fucked up"}
+			render status: 400, json: {error: "Item not made"}
 		end
 	end
 	private
