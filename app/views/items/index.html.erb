@@ -44,6 +44,11 @@
 				<%= f.label :description%>
 				<%= f.text_area :description, class: "js-item-desc new-item-input item-desc" %>
 				<br>
+				<% categories_array = Category.all.map { |category| [category.name, category.id] } %>
+				
+				<%= f.label :category_ids,'Category' %>
+	 			<%= f.select :category_ids, options_for_select(categories_array) %>
+	 	
 				<%= f.hidden_field :user_id, value: @current_user.id, class: "js-user-id"%>
 				<br>
 				<%= f.button id: "form-button", class: "js-add-new-item btn btn-blue" %>
