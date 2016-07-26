@@ -14,12 +14,15 @@ $(document).on("turbolinks:load", function(){
 		console.log(id);
 		var name = $('.js-item-name').val();
 		var desc = $('.js-item-desc').val();
+		var e =  $('#item_category_ids'); //$('#item-category-ids');
+		var cat_id = e.val();
+		console.log("Cat id: " + cat_id);
 		console.log(name);
 		console.log(desc);
 		$.ajax({
 		 	method: "post",
 		 	url: "/api/users/" + id + "/items",
-		 	data: {item: {name: name, description: desc, user_id: id }},
+		 	data: {item: {name: name, description: desc, user_id: id}, category_id: cat_id },
 		 	success: updateItems,
 		 	failure: function(error){
 		 		console.log(error);
@@ -30,7 +33,7 @@ $(document).on("turbolinks:load", function(){
 	function updateItems(response){
 		console.log(response);
 		//make the div for the new item
-		html = `<div class = "user-item" >
+		var html = `<div class = "user-item" >
 		<a href = "/user/${response.user_id}/items/${response.id}">
 		<div class = "item-box">
 		

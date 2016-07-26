@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get "static/find", to: "static#find_users"
 
   resources :users do
-		resources :items
+		resources :items, only: [:index, :show]
 	end
 
 	scope "/api" do

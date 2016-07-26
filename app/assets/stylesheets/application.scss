@@ -38,5 +38,44 @@ h1, h2, h3, h4, h5, h6{
 	border-width: 2px;
 	height: 40px;
 	margin: 20px 0;
-	background-color: white
+	background-color: white;
 }
+.uppercase{
+	text-transform: uppercase;
+}
+.category-row{
+	width: 100%;
+	border-style: solid;
+	border-width: 2px 0;
+	border-color: $light-gray;
+	height: 50px;
+	background-size: cover;
+}
+div.categories{
+	position: relative;
+	left: 50px;
+
+
+}
+
+div.category{
+	position: relative;
+	top: 10px;
+
+	display: inline-block;
+	margin: 0 20px;
+}
+
+.category > a{
+	color: black;
+}
+
+.category > a:hover{
+	text-decoration: none;
+	color: $party-pink;
+	
+}
+
+
+
+

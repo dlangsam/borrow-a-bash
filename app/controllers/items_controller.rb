@@ -2,7 +2,6 @@ class ItemsController < ApplicationController
 	before_action :authenticate_user!, only: [:index, :show]
 	def index
 		@current_user = current_user
-		@categories = Category.all
 		@items = current_user.items
 		@item = current_user.items.new
 	end
