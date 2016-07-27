@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "static#index"
-  get "static/find", to: "static#find_users"
+  get "nearby", to: "static#nearby"
+  resources :categories, only: [:index, :show]
+
 
   resources :users do
 		resources :items, only: [:index, :show]

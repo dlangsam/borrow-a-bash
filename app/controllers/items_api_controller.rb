@@ -1,7 +1,7 @@
 class ItemsApiController < ApplicationController
 
 	def create
-		category = category.find_by(id: params[:category_id])
+		category = Category.find_by(id: params[:category_id])
 		unless category
 			render status: 400, json: {error: "Category not found"}
 			return

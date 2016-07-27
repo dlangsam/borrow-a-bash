@@ -2,7 +2,8 @@
 	<div class = "category-row">
 	<div class="categories">
 	<%Category.all.each do  |category|%>
-	<div class="category uppercase" data-id= "category.id"><a>
+	<div class="category uppercase">
+	<a href = "<%=category_url(category.id)%>">
 		<%=category.name%>
 	</a></div>
 	<%end%>
