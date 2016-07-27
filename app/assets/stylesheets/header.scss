@@ -1,3 +1,23 @@
+.navbar-default{
+	border-style:none;
+	background-color: white;
+}
+.navbar-brand{
+	height: 80px;
+}
+.account-logo{
+	position: relative;
+	left: 45px;
+}
+.user-dropdown{
+	position:relative;
+	top: 5px;
+}
+.search{
+	position: relative;
+	top: 20px;
+
+}
 .header{
 	height: 100px;
 	text-align: center;
@@ -13,16 +33,6 @@
 	left: 0;
 	height: 80px;
 }
-
-.menu-options div{
-	display: inline-block;
-	float: left;
-}
-.menu-options{
-	position: absolute;
-	right: 0px;
-}
-
 
 .header-btn{
 	border-style: none;
@@ -44,6 +54,6 @@ a.header-btn{
 .btn.register, .btn.login {
 	font-size: 16px;
 }
-.header .material-icons{
+.navbar .material-icons{
 	color: #3399cc;
 }
