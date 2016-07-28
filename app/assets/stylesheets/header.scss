@@ -3,6 +3,11 @@
 	background-color: white;
 }
 
+.navbar-right{
+	position: relative;
+	right: -20px;
+}
+
 @media screen and (min-width: 786px){
 	.navbar-brand{
 		height: 80px;
@@ -21,7 +26,7 @@
 
 .account-logo{
 	position: relative;
-	left: 45px;
+	left: 15px;
 }
 .user-dropdown{
 	position:relative;

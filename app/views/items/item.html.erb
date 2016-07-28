@@ -3,9 +3,7 @@
 This item is shared by:
 <br>
 <%=@item.user.username%>
-<% if current_user %>
-<%=link_to "Send a message", new_user_message_url(current_user.id)%>
-<% end %>
+<%=link_to "Send a message", "/items/#{@item.id}/message/new"%>
 
 
 

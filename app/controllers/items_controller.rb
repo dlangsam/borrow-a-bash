@@ -7,30 +7,29 @@ class ItemsController < ApplicationController
 	end
 	def show
 		@item = Item.find_by(id: params[:id])
-
 	end
 	def new
 		@item = current_user.items.new
 	end
 	def create
 		category = Category.find(params[:categories])
-		#category = Category.find(1)
 		@item = Item.new(items_params)
-	
 		@item.save
 		category.items.push(@item)
-
 		redirect_to user_items_url(current_user.id)
-	
 	end
 	def item
 		@item = Item.find_by(id: params[:id])
+	end
+	def message
+		item = Item.find_by(id: params[:id])
+		@message  = Message.new
+		@user = @message.prepare_message(item)
 	end
 	private
 	def items_params
 		params.require(:item).permit(:user_id, :name, :description, :avatar)
 	end
-
 
 
 end

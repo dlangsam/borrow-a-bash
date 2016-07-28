@@ -11,9 +11,7 @@ module ApplicationHelper
 		@devise_mapping ||= Devise.mappings[:user]		
 	end
 
-	def lat_lng
-  		@lat_lng = cookies[:lat_lng].split("|")
-	end
+	
 
 
 end

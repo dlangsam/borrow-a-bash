@@ -3,11 +3,12 @@ Rails.application.routes.draw do
   root to: "static#index"
   get "nearby", to: "static#nearby"
   get "/items/:id", to: "items#item"
+  get "/items/:id/message/new", to: "items#message"
   resources :categories, only: [:index, :show]
-
+  resources :messages, only: [:index, :show, :new, :create]
   resources :users, only: [] do
 		resources :items, only: [:index, :show, :new, :create]
-		resources :messages, only: [:index, :show, :new, :create]
+		
 	end
 
 	scope "/api" do

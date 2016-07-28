@@ -3,7 +3,7 @@
       <i class="material-icons md-36">bubble_chart</i>
       <br><span>Your items</span>
 	</a></li>
-<li><a href = "<%= user_messages_url(current_user.id) %>" class="btn header-btn">
+<li><a href = "<%= messages_url(current_user.id) %>" class="btn header-btn">
       <%if current_user.unread_messages? %>
        <i class="material-icons md-36">markunread_mailbox</i>
       <%else%>
@@ -15,7 +15,7 @@
 
 <li class="dropdown user-dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-    <i class="material-icons md-36 account-logo">account_circle</i><br> Welcome, <%= current_user.username %> <span class="caret"></span></a>
+    <i class="material-icons md-36 account-logo">account_circle</i><br> Welcome,<br>  <%= current_user.username %> <span class="caret"></span></a>
     <ul class="dropdown-menu">
         <li><a href="/users/edit">My Profile</a></li>
 	    <li><a href="/users/sign_out" data-method="delete">Sign Out</a><li>

@@ -8,6 +8,15 @@ class Message < ApplicationRecord
 		end
 		self.save
 	end
+	def prepare_message(item)
+		to_user = item.user
+		generate_message_content(item, to_user.username)
+		return to_user
+	end
+
+	def generate_message_content(item, username)
+		self.content = "Hi #{username}. I'm interested in borrowing the #{item.name} that you listed!"
+	end
 
 
 

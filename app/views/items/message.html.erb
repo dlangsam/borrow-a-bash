@@ -1,0 +1,10 @@
+ <%= form_for [ @message] do |f| %>
+ 		<label for = "username"> To: </label>
+		<input type = "text_field" name = "username" value = "<%=@user.username%>" readonly>
+ 		<br>
+		<%= f.label :content%>
+		<%= f.text_area :content %>
+		<br>
+			
+		<%= f.button id: "form-button", class: " btn btn-blue" %>
+	<%end%>

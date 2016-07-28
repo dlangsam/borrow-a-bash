@@ -1,9 +1,9 @@
-<%=link_to "Send a message", new_user_message_url(current_user.id)%>
+<%=link_to "Send a message", new_message_url%>
 <%@messages.each do |m| %>
 <li>
 <%if !m.is_read?%>
 NOT READ
 <%end%>
-<a href = "<%=user_message_url(current_user.id, m.id)%>"> From: <%= m.sender.username%></a><br>
+<a href = "<%=message_url(m.id)%>"> From: <%= m.sender.username%></a><br>
 </li>
 <%end%>

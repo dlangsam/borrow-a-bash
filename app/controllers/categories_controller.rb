@@ -5,8 +5,8 @@ class CategoriesController < ApplicationController
 			@items = current_user.nearby_items_by_cat(params[:id].to_i)
 		else
 			coords = lat_lng
-			console.log( coords[0])
-			if coords
+
+			if  false && coords
 				@items = User.nearby_items_by_cat(location[0], location[1])
 			else
 				@items = Category.find(params[:id]).items
