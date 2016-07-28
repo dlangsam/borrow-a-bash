@@ -1,0 +1,10 @@
+ <%= form_for [current_user, @message] do |f| %>
+ 				<%= f.label :recipient_id, "To:" %>
+				<%= f.text_area :recipient_id%>
+				
+				<%= f.label :content%>
+				<%= f.text_area :content %>
+				<br>
+			
+				<%= f.button id: "form-button", class: " btn btn-blue" %>
+	<%end%>

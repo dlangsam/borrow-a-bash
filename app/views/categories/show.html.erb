@@ -1,11 +1,8 @@
 
 <div class = "user-items">
-<%if @category.items != nil %>
-	
-	<% @category.items.each do |item| %>
+<% @items.each do |item| %>
 	<div class = "user-item" >
-
-	<a>
+	<a href = "/items/<%=item.id%>">
 		<div class = "item-box">
 		
 		<h5><%= item.name %></h5>
@@ -16,7 +13,7 @@
 		</a>
 	
 		</div>
-	<% end %>
-
 <% end %>
+
+
 </div>

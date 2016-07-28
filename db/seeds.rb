@@ -21,9 +21,9 @@
 # User.create!(username: "User8", email: "user8@test.com", password: "password",
 # 	password_confirmation: "password", zip_code: "63130" )
 
-Category.create!(name: "Furniture")
-Category.create!(name: "Entertainment")
-Category.create!(name: "Decorations")
-Category.create!(name: "Food & Drink")
-Category.create!(name: "Electronics")
-Category.create!(name: "Kids")
+Category.find_or_create_by(name: "Furniture")
+Category.find_or_create_by(name: "Entertainment")
+Category.find_or_create_by(name: "Decorations")
+Category.find_or_create_by(name: "Food & Drink")
+Category.find_or_create_by(name: "Electronics")
+Category.find_or_create_by(name: "Kids")

@@ -1,0 +1,8 @@
+<h1><%=@item.name%></h1>
+<p>
+This item is shared by:
+<br>
+<%=@item.user.username%>
+<%=link_to "Send a message", new_user_message_url(current_user.id)%>
+
+<p>

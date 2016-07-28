@@ -3,8 +3,12 @@
       <i class="material-icons md-36">bubble_chart</i>
       <br><span>Your items</span>
 	</a></li>
-<li><a href = "<%= user_items_url(current_user.id) %>" class="btn header-btn">
+<li><a href = "<%= user_messages_url(current_user.id) %>" class="btn header-btn">
+      <%if current_user.inbound_messages.size > 0 %>
+       <i class="material-icons md-36">markunread_mailbox</i>
+      <%else%>
       <i class="material-icons md-36">mail_outline</i>
+      <%end%>
       <br><span>Messages</span>
 	</a></li>
 

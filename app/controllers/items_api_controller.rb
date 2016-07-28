@@ -16,7 +16,7 @@ class ItemsApiController < ApplicationController
 	end
 	private
 	def items_params
-		params.require(:item).permit(:user_id, :name, :description)
+		params.require(:item).permit(:user_id, :name, :description, :avatar)
 	end
 
 end

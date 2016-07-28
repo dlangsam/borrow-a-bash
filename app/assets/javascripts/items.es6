@@ -14,15 +14,19 @@ $(document).on("turbolinks:load", function(){
 		console.log(id);
 		var name = $('.js-item-name').val();
 		var desc = $('.js-item-desc').val();
-		var e =  $('#item_category_ids'); //$('#item-category-ids');
-		var cat_id = e.val();
+		var select =  $('#item_category_ids'); //$('#item-category-ids');
+		var cat_id = select.val();
+		var image = document.getElementById('item_avatar').value;
+		/*var file =  $('#item_avatar'); //$('#item-category-ids');
+		var image = file.text();*/
 		console.log("Cat id: " + cat_id);
 		console.log(name);
 		console.log(desc);
+		console.log(image);
 		$.ajax({
-		 	method: "post",
+		 	method: "post",  
 		 	url: "/api/users/" + id + "/items",
-		 	data: {item: {name: name, description: desc, user_id: id}, category_id: cat_id },
+		 	data: {item: {name: name, description: desc, user_id: id, avatar: image}, category_id: cat_id },
 		 	success: updateItems,
 		 	failure: function(error){
 		 		console.log(error);

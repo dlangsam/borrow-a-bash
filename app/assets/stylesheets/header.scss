@@ -2,9 +2,23 @@
 	border-style:none;
 	background-color: white;
 }
-.navbar-brand{
-	height: 80px;
+
+@media screen and (min-width: 786px){
+	.navbar-brand{
+		height: 80px;
+	}
 }
+@media screen and (min-width: 1186px){
+	.navbar-brand{
+		height: 80px;
+	}
+	.search{
+	position: relative;
+	top: 20px;
+	}
+}
+
+
 .account-logo{
 	position: relative;
 	left: 45px;
@@ -13,11 +27,7 @@
 	position:relative;
 	top: 5px;
 }
-.search{
-	position: relative;
-	top: 20px;
 
-}
 .header{
 	height: 100px;
 	text-align: center;

@@ -1,0 +1,16 @@
+<% @items.each do |item| %>
+
+	<div class = "user-item" >
+
+	<a>
+		<div class = "item-box">
+		
+		<h5><%= item.name %></h5>
+		<hr>
+		<p><%if item.description%><%=item.description %><%end%></p>
+		</div>
+
+		</a>
+	
+		</div>
+<% end %>

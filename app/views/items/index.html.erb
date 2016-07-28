@@ -1,4 +1,5 @@
 <h1> Your Items <button class = "btn btn-blue js-add-item"> Add an item to share </button></h1>
+<%= link_to "Add item form", new_user_item_url(current_user.id)%>
 <div class = "user-items">
 <%if @items.size > 0 %>
 	
@@ -11,6 +12,7 @@
 		<h5><%= item.name %></h5>
 		<hr>
 		<p><%if item.description%><%=item.description %><%end%></p>
+		<%= image_tag item.avatar.url(:medium) %>
 		</div>
 
 		</a>
@@ -38,7 +40,7 @@
       </div>
 
 		   <div class="modal-body modal-new-item">
-		   <%= form_for [@current_user, @item] do |f| %>
+		   <%= form_for [@current_user, @item], :remote => true,  :html => { :multipart => true } do |f| %>
 				<%= f.label :name%>
 				<%= f.text_field :name, class: "js-item-name new-item-input item-name"%>
 				<br>
@@ -48,7 +50,9 @@
 			
 				
 				<%= f.label :category_ids,'Category' %>	
-	 			<%= f.collection_select :category_ids, Category.all, :id, :name, class: "js-item-cat" %>
+	 			<%= f.collection_select :category_ids, Category.all, :id, :name, class: "js-item-cat" %><br>
+				<%= f.label :avatar,'Upload an image' %>	
+	 			 <%= f.file_field :avatar %>
 				<%= f.hidden_field :user_id, value: @current_user.id, class: "js-user-id"%>
 				<br>
 				<%= f.button id: "form-button", class: "js-add-new-item btn btn-blue" %>

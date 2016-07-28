@@ -32,6 +32,7 @@ gem 'material_icons'
 gem 'geocoder'
 gem 'sprockets'
 gem 'sprockets-es6', require: "sprockets/es6"
+gem "paperclip", "~> 4.3"
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
