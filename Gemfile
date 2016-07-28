@@ -33,7 +33,7 @@ gem 'geocoder'
 gem 'sprockets'
 gem 'sprockets-es6', require: "sprockets/es6"
 gem "paperclip", "~> 4.3"
-gem 'aws-sdk', '~> 2'
+gem 'aws-sdk', '< 2.0'
 gem 'figaro'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
