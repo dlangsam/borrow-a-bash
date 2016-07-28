@@ -4,9 +4,18 @@ class CategoriesController < ApplicationController
 		
 			@items = current_user.nearby_items_by_cat(params[:id].to_i)
 		else
-			##make a temporary user with location??
-			@items = Category.find(params[:id]).items
+			coords = lat_lng
+			console.log( coords[0])
+			if coords
+				@items = User.nearby_items_by_cat(location[0], location[1])
+			else
+				@items = Category.find(params[:id]).items
+			end
 		end
+	end
+
+	def lat_lng
+  		@lat_lng = cookies[:lat_lng].split("|")
 	end
 
 end

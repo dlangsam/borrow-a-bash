@@ -1,18 +1,18 @@
 <h1> Your Items <button class = "btn btn-blue js-add-item"> Add an item to share </button></h1>
 <%= link_to "Add item form", new_user_item_url(current_user.id)%>
 <div class = "user-items">
+
 <%if @items.size > 0 %>
 	
 	<% @items.all.each do |item| %>
 	<div class = "user-item" >
 
 	<a href = "<%=user_item_url(current_user.id, item.id)%>">
-		<div class = "item-box">
-		
+		<div class = "item-box">    
+		<%= image_tag item.avatar.url(:medium), class:"item-image" %>
 		<h5><%= item.name %></h5>
-		<hr>
-		<p><%if item.description%><%=item.description %><%end%></p>
-		<%= image_tag item.avatar.url(:medium) %>
+
+
 		</div>
 
 		</a>

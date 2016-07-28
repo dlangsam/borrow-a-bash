@@ -9,7 +9,7 @@ $(document).on("ready", function(){
 	if("geolocation" in navigator){
 		console.log("Broswer has geolocation");
 		var options = {timeout: 10000000};
-		navigator.geolocation.getCurrentPosition(showPosition, handleError, options);
+		navigator.geolocation.getCurrentPosition(getGeoLocation, handleError, options);
 	}else{
 		var html = `
 		<h2>Update your browser. </h2>
@@ -20,7 +20,7 @@ $(document).on("ready", function(){
 	BorrowABashApp.init();
 
 
-		function showPosition(position){
+	function showPosition(position){
 		console.log("User consented to give location");
 		console.log(position);
 
@@ -50,3 +50,12 @@ $(document).on("ready", function(){
 
 	}
 });
+
+function getGeoLocation() {
+  navigator.geolocation.getCurrentPosition(setGeoCookie);
+}
+
+function setGeoCookie(position) {
+  var cookie_val = position.coords.latitude + "|" + position.coords.longitude;
+  document.cookie = "lat_lng=" + escape(cookie_val);
+}

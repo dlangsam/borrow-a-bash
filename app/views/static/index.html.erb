@@ -1,11 +1,16 @@
 <div id = "main-content">
 
 <div class = "row">
+<% unless @lat_lng %>
+<script>
+  getGeoLocation();
+</script>
+<% end %>
 <p>
   Do you need to borrow something for a party?
   Look no further!
 </p>
-<a href = "static/find"> Find nearby users </a>
+<a href = "/nearby"> Find nearby users </a>
 </div>
 </div>
 

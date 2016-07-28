@@ -12,6 +12,14 @@ class User < ApplicationRecord
   geocoded_by :address
   after_validation :geocode
 
+  def self.nearby_items_by_cat(lat, long, distance = 50)
+    users = User.near([lat, long], distance)
+    items = nearby_users.map{|user| user.items}.flatten
+    nearby_items = nearby_items.select{ |item|
+      item.categories.pluck(:id).include? id
+    }
+  end
+
   def nearby_items_by_cat(id)
     items = nearby_items.select{ |item|
       item.categories.pluck(:id).include? id
@@ -20,8 +28,11 @@ class User < ApplicationRecord
   def nearby_items
     nearby_users.map{|user| user.items}.flatten
   end
-  def nearby_users
-    User.near([self.latitude, self.longitude], 50)
+  def nearby_users(distance = 50)
+   User.near([self.latitude, self.longitude], distance).select{
+    |user| user != self
+   }
+
   end
 
   def address
@@ -35,6 +46,9 @@ class User < ApplicationRecord
   end
   def messages
     inbound_messages + outbound_messages
+  end
+  def unread_messages?
+    inbound_messages.any?{|m| !m.is_read? }
   end
   def sort_messages(messages)
     messages.sort{|a,b|
