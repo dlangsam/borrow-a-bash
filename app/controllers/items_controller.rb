@@ -11,13 +11,22 @@ class ItemsController < ApplicationController
 	def new
 		@item = current_user.items.new
 	end
+	def destroy
+		item = Item.find(params[:id])
+		item.destroy
+		redirect_to user_items_url(current_user)
+	end
 	def create
 		category = Category.find(params[:categories])
 		@item = Item.new(items_params)
 		@item.save
 		category.items.push(@item)
-		redirect_to user_items_url(current_user.id)
+		redirect_to user_items_url(current_user)
 	end
+	def update
+
+	end
+
 	def item
 		@item = Item.find_by(id: params[:id])
 	end

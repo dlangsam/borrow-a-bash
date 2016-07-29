@@ -26,13 +26,27 @@ $(document).on("turbolinks:load", function(){
 		$.ajax({
 		 	method: "post",  
 		 	url: "/api/users/" + id + "/items",
-		 	data: {item: {name: name, description: desc, user_id: id, avatar: image}, category_id: cat_id },
+		 	data: {item: {name: name, description: desc, user_id: id}, category_id: cat_id },
 		 	success: updateItems,
 		 	failure: function(error){
 		 		console.log(error);
 		 	}
 		 })
 	});
+	$('.js-item-toggle-activation').on('click', function(event){
+		console.log("Activation link clicked")
+		event.preventDefault();
+		var id = $(this).data("id");
+		console.log(id)	
+			$.ajax({
+			method: "patch",
+			url: "/api/items/" + id + "/change_activation",
+			success: updateItemPublishedView,
+			failure: function(error){
+				console.log(error);
+			}
+		})
+	})
 
 	function updateItems(response){
 		console.log(response);
@@ -50,10 +64,14 @@ $(document).on("turbolinks:load", function(){
 		html += '</div></a></div>';
 		$('.user-items').append(html);
 		$('.js-new-item-modal').modal("hide");
-
-
-
-
+		$('.js-new-item-image-modal').modal("show");
 		/*$('.js-new-item-modal').modal("hide");*/		
+	}
+
+	function updateItemPublishedView(response){
+		console.log(response)
+		if(response.is_published) $('.js-item-toggle-activation').text("Deactivate");
+		else $('.js-item-toggle-activation').text("Activate");
+		$('.user-item').toggleClass('deactivated');
 	}
 })

@@ -11,7 +11,19 @@ class ItemsApiController < ApplicationController
 			category.items.push(item)
 			render json: item
 		else
-			render status: 400, json: {error: "Item not made"}
+			render status: 400, json: {error: "Item wasn't made"}
+		end
+	end
+	def change_published
+		item = Item.find_by(id: params[:id])
+		unless item
+			render status: 400, json: {error: "Item not found"}
+			return
+		end
+		if item.change_published
+			render json: item
+		else
+			render status: 400, json: {error: "Published status of item not changed"}
 		end
 	end
 	private

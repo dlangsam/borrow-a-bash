@@ -21,10 +21,8 @@
 
 .item-image{
 	width: 200px;
-	
-	
-
 }
+
 .item-box > p {
 	color: black;
 	padding: 3px;
@@ -37,8 +35,12 @@
 	width:60%;
 	border: solid 2px;
 	margin: 5px;
-
 }
+
 .item-name{
 	margin-left: 49px;
+}
+
+.deactivated{
+	background-color: $light-gray;
 }

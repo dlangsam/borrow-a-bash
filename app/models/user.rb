@@ -12,10 +12,10 @@ class User < ApplicationRecord
   geocoded_by :address
   after_validation :geocode
 
-  def self.nearby_items_by_cat(lat, long, distance = 50)
+  def self.nearby_items_by_cat(lat, long, id, distance = 50)
     users = User.near([lat, long], distance)
-    items = nearby_users.map{|user| user.items}.flatten
-    nearby_items = nearby_items.select{ |item|
+    items = users.map{|user| user.items}.flatten
+    nearby_items = items.select{ |item|
       item.categories.pluck(:id).include? id
     }
   end

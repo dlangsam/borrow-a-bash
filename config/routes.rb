@@ -4,14 +4,16 @@ Rails.application.routes.draw do
   get "nearby", to: "static#nearby"
   get "/items/:id", to: "items#item"
   get "/items/:id/message/new", to: "items#message"
+
   resources :categories, only: [:index, :show]
   resources :messages, only: [:index, :show, :new, :create]
   resources :users, only: [] do
-		resources :items, only: [:index, :show, :new, :create]
+		resources :items, only: [:index, :show, :new, :create, :destroy,:update]
 		
 	end
 
 	scope "/api" do
+		patch "/items/:id/change_activation", to: "items_api#change_published"
 		resources :users, controller: "users_api", only: [] do
 			resources :items, controller: "items_api" 
 		end
