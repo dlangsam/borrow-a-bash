@@ -20,13 +20,13 @@ class User < ApplicationRecord
     }
   end
 
-  def nearby_items_by_cat(id)
-    items = nearby_items.select{ |item|
+  def nearby_items_by_cat(id, distance = 50)
+    items = nearby_items(distance).select{ |item|
       item.categories.pluck(:id).include? id
     }
   end
-  def nearby_items
-    nearby_users.map{|user| user.items}.flatten
+  def nearby_items(distance = 50)
+    nearby_users(distance).map{|user| user.items}.flatten
   end
   def nearby_users(distance = 50)
    User.near([self.latitude, self.longitude], distance).select{

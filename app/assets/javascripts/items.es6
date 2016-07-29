@@ -38,14 +38,14 @@ $(document).on("turbolinks:load", function(){
 		event.preventDefault();
 		var id = $(this).data("id");
 		console.log(id)	
-			$.ajax({
+		$.ajax({
 			method: "patch",
 			url: "/api/items/" + id + "/change_activation",
 			success: updateItemPublishedView,
 			failure: function(error){
 				console.log(error);
 			}
-		})
+		});
 	})
 
 	function updateItems(response){

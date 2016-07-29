@@ -13,7 +13,8 @@ Rails.application.routes.draw do
 	end
 
 	scope "/api" do
-		patch "/items/:id/change_activation", to: "items_api#change_published"
+		patch "/items/:id/change_activation", to: "items_api#show"
+		get "categories/:id/:distance", to: "categories_api#show"
 		resources :users, controller: "users_api", only: [] do
 			resources :items, controller: "items_api" 
 		end

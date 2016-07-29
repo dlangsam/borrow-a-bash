@@ -1,5 +1,6 @@
 
-<div class = "user-items">
+<%= render("shared/filter_options") %>
+<div class = "user-items js-cat-id" data-id="<%=@category.id%>">
 <% @items.each do |item| %>
 	<div class = "user-item" >
 	<a href = "/items/<%=item.id%>">

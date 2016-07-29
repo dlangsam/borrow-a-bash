@@ -26,9 +26,13 @@ class ItemsApiController < ApplicationController
 			render status: 400, json: {error: "Published status of item not changed"}
 		end
 	end
+
+
 	private
 	def items_params
 		params.require(:item).permit(:user_id, :name, :description, :avatar)
 	end
+
+
 
 end
