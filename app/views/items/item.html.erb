@@ -3,6 +3,7 @@
 This item is shared by:
 <br>
 <%=@item.user.username%>
+<img src = "<%=@map_url%>" alt = "location_of_item" />
 <%=link_to "Send a message", "/items/#{@item.id}/message/new"%>
 
 

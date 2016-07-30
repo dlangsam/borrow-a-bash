@@ -6,24 +6,24 @@ class User < ApplicationRecord
   has_many :items
   has_many :inbound_messages, foreign_key: :recipient_id, class_name: "Message"
   has_many :outbound_messages, foreign_key: :sender_id, class_name: "Message"
-
-
-
   geocoded_by :address
   after_validation :geocode
 
-  def self.nearby_items_by_cat(lat, long, id, distance = 50)
-    users = User.near([lat, long], distance)
-    items = users.map{|user| user.items}.flatten
-    nearby_items = items.select{ |item|
-      item.categories.pluck(:id).include? id
-    }
+  def self.nearby_items_by_cat(id, coords, distance = 50)
+    tempUser = User.new(latitude: coords[0], longitude: coords[1])
+    items = tempUser.nearby_items_by_cat(id, coords, distance)
   end
 
-  def nearby_items_by_cat(id, distance = 50)
-    items = nearby_items(distance).select{ |item|
-      item.categories.pluck(:id).include? id
-    }
+  def nearby_items_by_cat(id, coords, distance = 50)
+    if coords != nil
+      self.latitude = coords[0]
+      self.longitude = coords[1]
+    end
+    items = nearby_items(distance).select do |item| 
+      item.categories.pluck(:id).include?(id) &&
+      item.is_published?
+    end
+
   end
   def nearby_items(distance = 50)
     nearby_users(distance).map{|user| user.items}.flatten
@@ -32,7 +32,9 @@ class User < ApplicationRecord
    User.near([self.latitude, self.longitude], distance).select{
     |user| user != self
    }
-
+  end
+  def get_zip_code
+    zip_code
   end
 
   def address

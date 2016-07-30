@@ -20,26 +20,6 @@ $(document).on("ready", function(){
 	BorrowABashApp.init();
 
 
-	function showPosition(position){
-		console.log("User consented to give location");
-		console.log(position);
-
-		var lat = position.coords.latitude;
-		var lng = position.coords.longitude;
-		var html = 
-		`<h2> Your position </h2>
-		<ul>
-		<li> Latitude: ${lat} </li>
-		<li> Longitude: ${lng} </li>
-		</ul>`;
-
-		/*mapURL = `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&size=640x400&zoom=15`
-		img = `<img src = ${mapURL}>`*/
-
-		$("body").append(html);
-		/*$("body").append(img);*/
-
-	}
 	function handleError(error){
 		console.log("There is an error.");
 		console.log(error);
@@ -51,8 +31,8 @@ $(document).on("ready", function(){
 	}
 });
 
-function getGeoLocation() {
-  navigator.geolocation.getCurrentPosition(setGeoCookie);
+function getGeoLocation(position) {
+  setGeoCookie(position);
 }
 
 function setGeoCookie(position) {

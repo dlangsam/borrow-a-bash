@@ -10,10 +10,6 @@
 				 <option value="<%=c.id%>"><%=c.name%></option>
 				<% end %>
 				</select><br>
-			
-	
-			<!-- 	<%= f.label :category_ids,'Category' %>	
-	 			<%= f.collection_select :category_ids, Category.all, :id, :name, class: "js-item-cat" %><br> -->
 				<%= f.label :avatar,'Upload an image' %>	
 	 			 <%= f.file_field :avatar %>
 				<%= f.hidden_field :user_id, value: @current_user.id, class: "js-user-id"%>

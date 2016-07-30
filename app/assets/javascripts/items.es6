@@ -47,6 +47,20 @@ $(document).on("turbolinks:load", function(){
 			}
 		});
 	})
+	$('.js-remove-image').on('click', function(event){
+		console.log("Remove image link clicked")
+		event.preventDefault();
+		var id = $(this).data("id");
+		console.log(id)	
+		$.ajax({
+			method: "patch",
+			url: "/api/items/" + id + "/remove_image",
+			success: updateImageRemove,
+			failure: function(error){
+				console.log(error);
+			}
+		});
+	});
 
 	function updateItems(response){
 		console.log(response);
@@ -73,5 +87,9 @@ $(document).on("turbolinks:load", function(){
 		if(response.is_published) $('.js-item-toggle-activation').text("Deactivate");
 		else $('.js-item-toggle-activation').text("Activate");
 		$('.user-item').toggleClass('deactivated');
+	}
+	function updateImageRemove(response){
+		console.log(response)
+		$('.js-remove-image').toggle("hidden");
 	}
 })

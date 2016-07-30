@@ -1,0 +1,30 @@
+ <%= form_for [@current_user, @item],   :html => { :multipart => true } do |f| %>
+	<%= f.label :name%>
+	<%= f.text_field :name, class: "js-item-name new-item-input item-name"%>
+	<br>
+	<%= f.label :description%>
+	<%= f.text_area :description, class: "js-item-desc new-item-input item-desc" %>
+	<br>
+	<%= f.label :deposit%>
+	<%= f.number_field :deposit, class: "new-item-input item-deposit"%>
+	<br>
+	<%= f.label :price%>
+	<%= f.number_field :price, class: "new-item-input item-price"%>
+	<br>Category:<br>
+	<% Category.all.each do |c| %>
+	<%if @item.categories.include? c %>
+	<input type="checkbox" name="category[]" value="<%=c.id%>" checked><%=c.name%><br>
+	<%else%>
+	<input type="checkbox" name="category[]" value="<%=c.id%>"><%=c.name%><br>
+	<%end%>
+	<% end %>
+	<br>
+			
+	
+			
+				<%= f.label :avatar,'Upload new image' %>	
+	 			 <%= f.file_field :avatar %>
+				<%= f.hidden_field :user_id, value: @current_user.id, class: "js-user-id"%>
+				<br>
+				<%= f.button id: "form-button", class: " btn btn-blue" %>
+		<%end%>

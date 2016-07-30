@@ -8,13 +8,14 @@ Rails.application.routes.draw do
   resources :categories, only: [:index, :show]
   resources :messages, only: [:index, :show, :new, :create]
   resources :users, only: [] do
-		resources :items, only: [:index, :show, :new, :create, :destroy,:update]
+		resources :items
 		
 	end
 
 	scope "/api" do
-		patch "/items/:id/change_activation", to: "items_api#show"
-		get "categories/:id/:distance", to: "categories_api#show"
+		patch "/items/:id/remove_image", to: "items_api#remove_image"
+		patch "/items/:id/change_activation", to: "items_api#change_published"
+		get "/categories/:id", to: "categories_api#show"
 		resources :users, controller: "users_api", only: [] do
 			resources :items, controller: "items_api" 
 		end

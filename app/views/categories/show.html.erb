@@ -1,20 +1,5 @@
 
 <%= render("shared/filter_options") %>
-<div class = "user-items js-cat-id" data-id="<%=@category.id%>">
-<% @items.each do |item| %>
-	<div class = "user-item" >
-	<a href = "/items/<%=item.id%>">
-		<div class = "item-box">
-		
-		<h5><%= item.name %></h5>
-		<hr>
-		<p><%if item.description%><%=item.description %><%end%></p>
-		</div>
-
-		</a>
-	
-		</div>
-<% end %>
-
+<div class = "user-items js-cat-id js-cat-items" data-id="<%=@category.id%>">
 
 </div>

@@ -1,6 +1,8 @@
 
-<span><h5>Listing tools:</h5>
+<div><span>Listing tools:
 
+<%= link_to 'Edit',   edit_user_item_url(current_user, @item, method: :patch)%>
+<a href = "#" class = "js-remove-image" data-id = "<%=@item.id%>">Remove image</a>
 <a href = "#" class = "js-item-toggle-activation" data-id = "<%=@item.id%>">
 	<%if @item.is_published %>
 	Deactivate
@@ -10,6 +12,7 @@
 </a>
  <%= link_to 'Delete', user_item_url(current_user, @item), method: :delete, data: {confirm: 'Are you sure?'} %>
 </span>
+</div>
 <div class = "user-item">
 <h1><%= @item.name %></h1>
 <% if @item.description %>

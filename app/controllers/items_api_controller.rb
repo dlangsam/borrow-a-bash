@@ -26,6 +26,19 @@ class ItemsApiController < ApplicationController
 			render status: 400, json: {error: "Published status of item not changed"}
 		end
 	end
+	def remove_image
+		item = Item.find_by(id: params[:id])
+		unless item
+			render status: 400, json: {error: "Item not found"}
+			return
+		end
+		item.avatar.destroy
+		if item.save
+			render json: item
+		else
+			render status: 400, json: {error: "Published status of item not changed"}
+		end
+	end
 
 
 	private

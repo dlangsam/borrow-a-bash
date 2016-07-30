@@ -1,4 +1,18 @@
 <div>
-Distance: <input class = "js-distance" type = "number" value = "50"></input> 
+<label for="distance">Distance:</label><input class = "js-distance" name = "distance" type = "number" value = "50"></input>
+<label for "zip_code">Zip Code:</label><input class = "js-zip" name = "zip_code" type = "number" size = 5 value = "<%=@zip%>"></input>
+<label for "use-location">Use current location:</label>
+<input type="checkbox" name="use_location" class = "js-use-loc">
+
 <button class = "btn btn-blue js-change-distance">Search</button>
 </div>
+
+<div id = "map">
+
+</div>
+
+<script type="text/javascript">
+	navigator.geolocation.getCurrentPosition(searchWithCurrentLocation)
+</script>
+
+
