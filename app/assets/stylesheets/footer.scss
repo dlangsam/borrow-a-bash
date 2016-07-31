@@ -1,16 +1,17 @@
+@import 'config';
+
 #footer{
 	width: 100%;
 	text-align: center;
     position: fixed;
     bottom: 0;
     color: black; /*#e18def;*/ 
-    background-color: gray;
-    background-image: url("glitter.jpg");
     margin: 10px 0 0;
+    background-color: $light-gray;
 
 }
 #footer span{
-	color: #ff6699;
+	color: $party-pink;
 
 
 }

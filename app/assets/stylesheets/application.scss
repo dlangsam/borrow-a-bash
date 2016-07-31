@@ -28,8 +28,10 @@ h1, h2, h3, h4, h5, h6{
 .main-content{
 	display: inline-block;
 	width: 100%;
-	overflow: scroll;
 	height: 100vh;
+	background-color: $light-gray;
+	padding: 15px;
+	background-size: cover;
 
 }
 .btn-blue{
@@ -41,14 +43,20 @@ h1, h2, h3, h4, h5, h6{
 	background-color: white;
 }
 .btn-blue:hover{
-
-	background-color: $celebration-blue;
-	
-
+	background-color: $celebration-blue;	
 
 }
 .uppercase{
 	text-transform: uppercase;
+}
+.bold{
+	font-weight: bold;
+}
+.truncated {
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .category-row{
 	width: 100%;
@@ -81,6 +89,15 @@ div.category{
 	text-decoration: none;
 	color: $party-pink;
 	
+}
+.center.row{
+	text-align: center;
+}
+div.white{
+	background-color: white;
+	border: 1px solid $dark-gray; 
+	margin: 2px;
+	padding: 3px;
 }
 
 

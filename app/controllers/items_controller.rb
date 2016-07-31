@@ -52,6 +52,21 @@ class ItemsController < ApplicationController
 		@message  = Message.new
 		@user = @message.prepare_message(item)
 	end
+	def search
+		search_term = params[:search_term]
+		@category = Category.find(params[:id])
+		@zip = ""
+		if current_user
+			@zip = "#{current_user.get_zip_code}"
+		end
+		if @zip == ""
+			lat = cookies[:lat]
+			lng = cookies[:lng]
+			if(lat !=nil && lng != nil)
+				@zip = Geocoder.search("#{lat},#{lng}").first.postal_code
+			end
+		end	
+	end
 	private
 	def items_params
 		params.require(:item).permit(:user_id, :name, :description, :avatar, :depsoit, :price)

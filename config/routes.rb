@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   root to: "static#index"
   get "nearby", to: "static#nearby"
   get "/items/:id", to: "items#item"
+  get "/items/:search_term", to: "items#search"
   get "/items/:id/message/new", to: "items#message"
-
+  get "/messages/outgoing", to: "messages#outbox"
+  get "/messages/:id/reply", to:"messages#reply"
   resources :categories, only: [:index, :show]
   resources :messages, only: [:index, :show, :new, :create]
   resources :users, only: [] do

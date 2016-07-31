@@ -13,7 +13,11 @@
  <%= link_to 'Delete', user_item_url(current_user, @item), method: :delete, data: {confirm: 'Are you sure?'} %>
 </span>
 </div>
-<div class = "user-item">
+<%if @item.is_published %> 
+<div class = "js-user-item user-item ">
+<%else%>
+<div class = "js-user-item user-item deactivated">
+<%end%>
 <h1><%= @item.name %></h1>
 <% if @item.description %>
 <p><%= @item.description %></p>

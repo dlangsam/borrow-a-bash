@@ -1,6 +1,7 @@
-<div class = "row">
-	<div class = "category-row">
-	<div class="categories">
+<div class = "navbar navbar-default">
+	<div class = "category-row container-fluid">
+	<div class="categories navbar-header">
+	<div class="collapse navbar-collapse">
 	<%Category.all.each do  |category|%>
 	<div class="category uppercase">
 	<a href = "<%=category_url(category.id)%>">
@@ -9,4 +10,7 @@
 	<%end%>
 	</div>
 	</div>
+	</div>
 </div>
+
+

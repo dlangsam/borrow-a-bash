@@ -1,3 +1,50 @@
 // Place all the styles related to the messages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'config';
+.messages{
+	margin:  15px;
+	padding: 0 20px;
+}
+.message, .new{
+	border: 1px solid $dark-gray; 
+	background-color: white;
+}
+.mail-tabs{
+	background-color: $light-gray;
+	
+}
+.mail-tabs > .active{
+	background-color: white;
+	border: solid $dark-gray; 
+	border-radius: 5px;
+	border-width: 1px 1px 0px 1px ;
+}
+.mail-tabs > .active > a{
+	margin: 0;
+
+}
+.msg.input{
+	width: 100%;
+	border: 0;
+
+}
+.content.msg{
+	height: 200px;
+	overflow: scroll;
+}
+.to{
+	position:relative;
+	top: 8px;
+	margin:0px;
+	border: 0;
+	padding: 0;
+}
+.to-input{
+	width: 92%;
+}
+.to-label{
+	width: 7%;
+}
+

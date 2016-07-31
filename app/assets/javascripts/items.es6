@@ -34,7 +34,6 @@ $(document).on("turbolinks:load", function(){
 		 })
 	});
 	$('.js-item-toggle-activation').on('click', function(event){
-		console.log("Activation link clicked")
 		event.preventDefault();
 		var id = $(this).data("id");
 		console.log(id)	
@@ -48,7 +47,6 @@ $(document).on("turbolinks:load", function(){
 		});
 	})
 	$('.js-remove-image').on('click', function(event){
-		console.log("Remove image link clicked")
 		event.preventDefault();
 		var id = $(this).data("id");
 		console.log(id)	
@@ -86,7 +84,7 @@ $(document).on("turbolinks:load", function(){
 		console.log(response)
 		if(response.is_published) $('.js-item-toggle-activation').text("Deactivate");
 		else $('.js-item-toggle-activation').text("Activate");
-		$('.user-item').toggleClass('deactivated');
+		$('.js-user-item').toggleClass('deactivated');
 	}
 	function updateImageRemove(response){
 		console.log(response)

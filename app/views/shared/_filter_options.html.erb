@@ -1,16 +1,33 @@
-<div>
-<label for="distance">Distance:</label><input class = "js-distance" name = "distance" type = "number" value = "50"></input>
-<label for "zip_code">Zip Code:</label><input class = "js-zip" name = "zip_code" type = "number" size = 5 value = "<%=@zip%>"></input>
-<label for "use-location">Use current location:</label>
-<input type="checkbox" name="use_location" class = "js-use-loc">
-
-<button class = "btn btn-blue js-change-distance">Search</button>
+<div class = "col-md-3 col-xs-12 search-filter white">
+<div class = "center row">
+	<div class = "col-md-4 ">
+	<label for="distance">Distance:</label>
+	</div>
+	<div class = "col-md-8">
+	<input class = "js-distance input" name = "distance" type = "number" value = "50"></input>
+	</div>
 </div>
-
-<div id = "map">
-
+<div class = "center row">
+<div class = "col-md-4 ">
+	<label for "zip_code">Zip Code:</label>
+	</div>
+	<div class = "col-md-8">
+	<input class = "js-zip input name = "zip_code" type = "number" size = 5 value = "<%=@zip%>"></input>
+	</div>
+	<div class = col-md-12>
+	or
+	<label for "use-location">use current location:</label>
+	<input type="checkbox" name="use_location" class = "js-use-loc">
+	</div>
 </div>
-
+	<div class = "center row">
+	<button class = "btn btn-blue js-change-distance">Search</button>
+</div>
+<div class = "row">
+	<div id = "map">
+	</div>
+</div>
+</div>
 <script type="text/javascript">
 	navigator.geolocation.getCurrentPosition(searchWithCurrentLocation)
 </script>

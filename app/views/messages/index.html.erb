@@ -1,9 +1,49 @@
-<%=link_to "Send a message", new_message_url%>
-<%@messages.each do |m| %>
-<li>
-<%if !m.is_read?%>
-NOT READ
-<%end%>
-<a href = "<%=message_url(m.id)%>"> From: <%= m.sender.username%></a><br>
-</li>
-<%end%>
+
+<div class = "messages">
+<div class = "row">
+	<div class = "col-md-12">
+		<ul class="nav nav-tabs mail-tabs">
+			<li class="<%= 'active' if @inbox%>">
+   				<a href="<%= '/messages' if !@inbox%>">Inbox</a></li>
+  			<li class="<%= 'active' if !@inbox%>">
+  				<a href="<%= '/messages/outgoing' if @inbox%>">Sent</a></li>
+  			<li class = "send-mail"><%=link_to "Send a message", new_message_url%></li>
+ 		</ul>
+ 	</div>
+</div>
+<div class = "row">
+
+	<%@messages.each do |m| %>
+	<div class = "message row"><a href = "<%=message_url(m.id)%>">
+		<div class = "message-read col-md-1">
+			<%if !m.is_read? && @inbox%>
+			  &#9733;
+			<%end%>
+		</div>
+		<div class = "message-from col-md-3 truncated">
+			<%if @inbox %>
+ 			<%= m.sender.username%>
+ 			<%else%>
+ 			<strong>To:</strong><%=m.recipient.username %>
+ 			<%end%>
+ 		</div>
+ 	
+ 		<div class = "message-content col-md-6 truncated">
+ 			<strong><%= m.subject%> </strong><%=m.content%>
+ 		</div>
+
+ 		<div class = "message-date col-md-2">
+ 			<strong>
+ 			<%if m.created_at > DateTime.yesterday %>
+ 				<%= m.created_at.strftime("%l:%M %p") %>
+ 			<%else%>	
+				<%= m.created_at.strftime("%B %e") %>
+			<%end%>
+ 			</strong>
+		</div>
+	</a>
+	</div>
+	<%end%>
+
+</div>
+</div>

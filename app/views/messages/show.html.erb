@@ -1,1 +1,18 @@
-<%=@message.content%>
+<div class = "messages">
+	<div class = "message row">
+	<span class = "bold">To:</span>
+	<%=@message.recipient.username%></div>
+	<div class = "message row"><span class = "bold">From:</span>
+	<%=@message.sender.username%></div>
+	<div class = "message row">
+		<span class = "bold">Subject:<%=@message.subject%></span>
+		<br>
+		<%= @message.created_at.strftime(" %B %e at %l:%M %p ") %>
+
+	</div>
+	<div class = "message row msg content"><%=@message.content%></div>
+	<div class = "center row">
+		<a href = "/messages/<%=@message.id%>/reply" class = "btn btn-blue">Reply</a>
+	</div>
+	
+</div>

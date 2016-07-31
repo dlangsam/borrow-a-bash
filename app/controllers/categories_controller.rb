@@ -9,12 +9,9 @@ class CategoriesController < ApplicationController
 			lat = cookies[:lat]
 			lng = cookies[:lng]
 			if(lat !=nil && lng != nil)
+				puts "test#{lat},#{lng}"
 				@zip = Geocoder.search("#{lat},#{lng}").first.postal_code
 			end
-		end
-
-		
-
-
+		end		
 	end
 end

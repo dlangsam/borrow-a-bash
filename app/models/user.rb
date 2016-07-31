@@ -14,6 +14,22 @@ class User < ApplicationRecord
     items = tempUser.nearby_items_by_cat(id, coords, distance)
   end
 
+  def self.nearby_items_by_search(term, coords, distance = 50)
+     tempUser = User.new(latitude: coords[0], longitude: coords[1])
+     items = tempUser.nearby_items_by_search(term, coords, distance)
+  end
+  def nearby_items_by_searcht(term, coords, distance = 50)
+    if coords != nil
+      self.latitude = coords[0]
+      self.longitude = coords[1]
+    end
+    items = nearby_items(distance).select do |item| 
+      item.name.include?(term)&&
+      item.is_published?
+    end
+
+  end
+
   def nearby_items_by_cat(id, coords, distance = 50)
     if coords != nil
       self.latitude = coords[0]
