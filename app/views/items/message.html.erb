@@ -1,10 +1,37 @@
  <%= form_for [ @message] do |f| %>
- 		<label for = "username"> To: </label>
-		<input type = "text_field" name = "username" value = "<%=@user.username%>" readonly>
- 		<br>
-		<%= f.label :content%>
-		<%= f.text_area :content %>
-		<br>
-			
-		<%= f.button id: "form-button", class: " btn btn-blue" %>
+ <div class = "message new">
+	<div class = "row">
+	
+ 		<div class = "col-md-12">
+ 			<input type = "text_field" class = "to to-label input" value = "To:" readonly>
+			<input type = "text_field" name = "username" class = "to to-input input" 
+			placeholder = "username" value = "<%=@user.username%>" readonly>
+		</div>
+ 	</div>
+ 		<div class = "row">
+ 		<hr>
+ 		</div>
+ 	<div class = "row">
+ 		<div class = "col-md-12 ">
+			<%= f.text_field :subject, class: "msg input", placeholder: "Subject"  %>
+		</div>
+ 	</div>
+ 		<div class = "row">
+ 		<hr>
+ 		</div>
+ 	<div class = "row">
+		<div class = "col-md-12">
+ 			<%= f.text_area :content, class: "content msg input" %>
+		</div>
+ 	</div>
+ 	
+ 		</div>
+ 				
+			<div class = "center row">
+			<%= f.submit "Send", id: "form-button", class: " btn btn-blue" %>
+			</div>
 	<%end%>
+</div>
+
+
+
