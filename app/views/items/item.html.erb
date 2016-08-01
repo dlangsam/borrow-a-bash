@@ -1,11 +1,37 @@
-<h1><%=@item.name%></h1>
-<p>
-This item is shared by:
-<br>
-<%=@item.user.username%>
-<img src = "<%=@map_url%>" alt = "location_of_item" />
-<%=link_to "Send a message", "/items/#{@item.id}/message/new"%>
 
 
 
-<p>
+
+
+
+<div class = "listing row">
+<span class = "back-link">
+<%= link_to 'Back to all items', :back %>
+</span>
+</div>
+<div class = "white row">
+	<div class = "col-md-4">
+		<%= image_tag @item.avatar.url(:medium), class:"item-image large" %>
+	</div>
+	<div class = "col-md-4">
+		<div class = "item-box">    
+			
+			<div class = "item-desc">
+			<div class = "center row"><h4><%= @item.name %></h4></div>
+			<div>
+			<%=@item.description%>
+			<br>
+			Deposit: <%=sprintf('%.2f', @item.deposit)%> 
+			<br>
+			Rental fee: <%=sprintf('%.2f', @item.price)%>
+			<br>
+			This item is shared by: <%=@item.user.username%>
+			<%=link_to "Send a message", "/items/#{@item.id}/message/new"%>
+			</div>
+		</div>
+	</div>
+	</div>
+	<div class = "col-md-4">
+		<img src = "<%=@map_url%>" alt = "location_of_item" />		
+	</div>	
+	</div>

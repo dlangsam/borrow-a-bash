@@ -6,26 +6,30 @@
 
 .user-item{
 	display: inline-block;
-	border-width: 2px;
-	border-color: $party-pink;
-	border-style: solid;
-	width: 200px;
-	height: 300px;
-	border-radius: 5px;
+	width: 220px;
+	height: 280px;
 	position: relative;
 	float: left;
-	margin: 1px;
-
-
+	margin: 5px;
 }
 
 .item-image{
+	margin: 10px 10px 10px 5px;;
 	width: 200px;
+	height: 200px;
 }
+.item-image.large{
+	width: 300px;
+	height: 300px;
+
+}
+
 
 .item-box > p {
 	color: black;
 	padding: 3px;
+	margin: 2px;
+
 
 }
 
@@ -41,6 +45,14 @@
 	margin-left: 49px;
 }
 
-.deactivated{
-	background-color: $light-gray;
+
+.item-desc{
+	color: black;
+	font-size: 12px;
+}
+.listing.row{
+	margin:5px;
+}
+.back-link{
+	float:right;
 }

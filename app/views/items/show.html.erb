@@ -1,8 +1,14 @@
 
-<div><span>Listing tools:
+<div class = "listing row">
+
+Listing tools:
 
 <%= link_to 'Edit',   edit_user_item_url(current_user, @item, method: :patch)%>
+&#9679;
+<%if @item.avatar_file_name != nil %>
 <a href = "#" class = "js-remove-image" data-id = "<%=@item.id%>">Remove image</a>
+&#9679;
+<% end %>
 <a href = "#" class = "js-item-toggle-activation" data-id = "<%=@item.id%>">
 	<%if @item.is_published %>
 	Deactivate
@@ -10,17 +16,41 @@
 	Activate
 	<% end %>
 </a>
+&#9679;
  <%= link_to 'Delete', user_item_url(current_user, @item), method: :delete, data: {confirm: 'Are you sure?'} %>
+
+<span class = "back-link">
+<%= link_to 'Back to all items', user_items_url(current_user) %>
 </span>
 </div>
+<div class = "js-user-item">
 <%if @item.is_published %> 
-<div class = "js-user-item user-item ">
+<div class = "js-row white row" >
 <%else%>
-<div class = "js-user-item user-item deactivated">
+<div class = "js-row deactivated row" >
 <%end%>
-<h1><%= @item.name %></h1>
-<% if @item.description %>
-<p><%= @item.description %></p>
-<% end %> 
+
+	<div class = "col-md-4">
+		<%= image_tag @item.avatar.url(:medium), class:"item-image large" %>
+	</div>
+	<div class = "col-md-8">
+		<div class = "item-box">    
+			
+			<div class = "item-desc">
+			<div class = "center row"><h4><%= @item.name %></h4></div>
+			<div>
+			<%=@item.description%>
+			<br>
+			Categories: 
+			<%@item.categories.each do |cat|%>
+			<%=cat.name%>
+			<%end%>
+			<br>
+			Deposit: <%=sprintf('%.2f', @item.deposit)%> 
+			<br>
+			Rental fee: <%=sprintf('%.2f', @item.price)%>
+			</div>
+			
+	</div>	
 </div>
 

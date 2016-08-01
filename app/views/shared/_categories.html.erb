@@ -1,16 +1,33 @@
-<div class = "navbar navbar-default">
-	<div class = "category-row container-fluid">
-	<div class="categories navbar-header">
-	<div class="collapse navbar-collapse">
-	<%Category.all.each do  |category|%>
-	<div class="category uppercase">
+
+<hr>
+
+<div class = "row center category">
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        Categories
+      </button>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse cat-btns" id="bs-example-navbar-collapse-2">
+      <ul class="nav navbar-nav">
+   
+      	<%Category.all.each do  |category|%>
+	<li class="category uppercase">
 	<a href = "<%=category_url(category.id)%>">
 		<%=category.name%>
-	</a></div>
+	</a></li>
 	<%end%>
-	</div>
-	</div>
-	</div>
-</div>
 
+
+      </ul>
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</div>
 

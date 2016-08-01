@@ -84,7 +84,8 @@ $(document).on("turbolinks:load", function(){
 		console.log(response)
 		if(response.is_published) $('.js-item-toggle-activation').text("Deactivate");
 		else $('.js-item-toggle-activation').text("Activate");
-		$('.js-user-item').toggleClass('deactivated');
+		$('.js-row').toggleClass('deactivated');
+		$('.js-row').toggleClass('white');
 	}
 	function updateImageRemove(response){
 		console.log(response)

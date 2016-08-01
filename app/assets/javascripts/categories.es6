@@ -68,11 +68,20 @@ function updateSearchItems(response){
 		initMapByCoords(response.location);
 		$('.js-cat-items').empty();
 		response.items.forEach(function(item){
-			var item_html = `<div class = "user-item" >
-						<a href = "/items/${item.id}">
+			var item_html = `<div class = "white user-item" >
+
+						<a href = "/items/${item.id}" class = "item-link">
 						<div class = "item-box">
+					
+						<div class = "item-desc">
+						
 						<h5>${item.name}</h5>
-						<hr>`;
+						
+						</div>
+			
+						</div>	
+						</a>
+						</div>`;
 						
 			if (item_html.description != null){
 				item_html += `<p>item.description</p>`;
