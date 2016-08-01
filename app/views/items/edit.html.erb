@@ -1,16 +1,42 @@
+<div class ="white row">
  <%= form_for [@current_user, @item],   :html => { :multipart => true } do |f| %>
+	<div class = "row">
+	<div class = "col-md-3">
 	<%= f.label :name%>
-	<%= f.text_field :name, class: "js-item-name new-item-input item-name"%>
-	<br>
+	</div>
+	<div class = "col-md-9">
+	<%= f.text_field :name, class: "js-item-name new-item-input"%>
+	</div>
+	</div>
+	<div class = "row">
+	<div class = "col-md-3">
 	<%= f.label :description%>
+	</div>
+	<div class = "col-md-9">
 	<%= f.text_area :description, class: "js-item-desc new-item-input item-desc" %>
-	<br>
+	</div>
+	</div>
+	<div class = "row">
+	<div class = "col-md-3">
 	<%= f.label :deposit%>
+	</div>
+	<div class = "col-md-9">
 	<%= f.number_field :deposit, class: "new-item-input item-deposit"%>
-	<br>
+	</div>
+	</div>
+	<div class = "row">
+	<div class = "col-md-3">
 	<%= f.label :price%>
+	</div>
+	<div class = "col-md-9">
 	<%= f.number_field :price, class: "new-item-input item-price"%>
-	<br>Category:<br>
+	</div>
+	</div>
+	<div class = "row">
+	<div class = "col-md-3">
+	Category:
+		</div>
+	<div class = "col-md-9 cat-list">
 	<% Category.all.each do |c| %>
 	<%if @item.categories.include? c %>
 	<input type="checkbox" name="category[]" value="<%=c.id%>" checked><%=c.name%><br>
@@ -18,13 +44,19 @@
 	<input type="checkbox" name="category[]" value="<%=c.id%>"><%=c.name%><br>
 	<%end%>
 	<% end %>
-	<br>
-			
 	
 			
-				<%= f.label :avatar,'Upload new image' %>	
-	 			 <%= f.file_field :avatar %>
-				<%= f.hidden_field :user_id, value: @current_user.id, class: "js-user-id"%>
-				<br>
-				<%= f.button id: "form-button", class: " btn btn-blue" %>
-		<%end%>
+	
+	<div><br>		
+	<%= f.label :avatar,'Upload new image' %>	
+	<%= f.file_field :avatar %>
+	<%= f.hidden_field :user_id, value: @current_user.id, class: "js-user-id"%>
+		</div>
+		</div>
+		</div>
+	<div class = "row center">
+	<%= f.button id: "form-button", class: "btn btn-blue" %>
+	</div>
+	
+ <%end%>
+</div>

@@ -13,3 +13,5 @@ module BorrowABash
     # -- all .rb files in that directory are automatically loaded.
   end
 end
+
+Geocoder::Configuration.timeout = 15

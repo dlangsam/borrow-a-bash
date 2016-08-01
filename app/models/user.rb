@@ -9,37 +9,33 @@ class User < ApplicationRecord
   geocoded_by :address
   after_validation :geocode
 
-  def self.nearby_items_by_cat(id, coords, distance = 50)
+  def self.nearby_items_by_cat(id, coords, search_term, distance = 50)
     tempUser = User.new(latitude: coords[0], longitude: coords[1])
     items = tempUser.nearby_items_by_cat(id, coords, distance)
   end
 
-  def self.nearby_items_by_search(term, coords, distance = 50)
-     tempUser = User.new(latitude: coords[0], longitude: coords[1])
-     items = tempUser.nearby_items_by_search(term, coords, distance)
-  end
-  def nearby_items_by_searcht(term, coords, distance = 50)
+  def nearby_items_by_cat(id, coords, search, distance = 50)
+    puts "ID:#{id}"
+    puts "Dist: #{distance}"
+    puts "Search: #{search}"
     if coords != nil
       self.latitude = coords[0]
       self.longitude = coords[1]
     end
-    items = nearby_items(distance).select do |item| 
-      item.name.include?(term)&&
-      item.is_published?
+        #get only published items
+    filtered_items = nearby_items(distance).select do |item|
+        item.is_published?
     end
-
+    if id != 0
+      filtered_items = nearby_items(distance).select do |item|
+        item.categories.pluck(:id).include?(id)
+    end
   end
-
-  def nearby_items_by_cat(id, coords, distance = 50)
-    if coords != nil
-      self.latitude = coords[0]
-      self.longitude = coords[1]
+   if search != nil
+      filtered_items = nearby_items(distance).select do |item|
+        item.name.downcase.include?(search.downcase)
     end
-    items = nearby_items(distance).select do |item| 
-      item.categories.pluck(:id).include?(id) &&
-      item.is_published?
-    end
-
+  end
   end
   def nearby_items(distance = 50)
     nearby_users(distance).map{|user| user.items}.flatten

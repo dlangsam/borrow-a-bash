@@ -4,7 +4,7 @@
 var map; 
 
 $(document).on("turbolinks:load", function(){
-	$('.js-change-distance').on('click', function(){
+	$('.js-search').on('click', function(){
 		var options = {timeout: 10000000};
 		if($('.js-use-loc').prop("checked")){
 			navigator.geolocation.getCurrentPosition( 
@@ -15,11 +15,13 @@ $(document).on("turbolinks:load", function(){
 					"Location unavailable"
 				},options)
 		}else{ 
+			var search_term = $('.js-search').val();
 			var zip = $('.js-zip').val();
 			var miles = $('.js-distance').val();
 			var cat_id = $('.js-cat-id').data("id");
+			console.log("Cat id" + cat_id);
 			var api_url ="/api/categories/" + cat_id + "?miles=" + encodeURI(miles) + "&zip="
-			 +zip;
+			 +zip + "&search=" + encodeURI(search_term);
 			console.log(api_url);
 			$.ajax({
 				method: "get",
@@ -44,6 +46,7 @@ $(document).on("turbolinks:load", function(){
 function searchWithCurrentLocation(position){
 		var miles = $('.js-distance').val();
 		var cat_id = $('.js-cat-id').data("id");
+			console.log("CAt id:" + cat_id);
 		var lat = encodeURI(position.coords.latitude.toString());
 		var lng = encodeURI(position.coords.longitude.toString());
 		var api_url ="/api/categories/" + cat_id + "?miles=" + encodeURI(miles) + "&lat="

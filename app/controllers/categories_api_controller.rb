@@ -3,7 +3,8 @@ class CategoriesApiController < ApplicationController
 		distance = params[:miles].to_f
 		lat = params[:lat].to_f
 		lng = params[:lng].to_f
-		
+		search_term = params[:search]
+
 		zip_code = params[:zip]
 		if zip_code != nil
 			coords = Geocoder.search(zip_code).first.coordinates
@@ -12,12 +13,20 @@ class CategoriesApiController < ApplicationController
 		end
 		if  lat != nil && lng != nil
 		 	if current_user
-		 		items = current_user.nearby_items_by_cat(params[:id].to_i, [lat, lng], distance)
+		 		puts "here1"
+		 		items = current_user.nearby_items_by_cat(params[:id].to_i, [lat, lng], search_term, distance)
 			else
-				items = User.nearby_items_by_cat(params[:id].to_i, [lat, lng], distance)
+				puts "here2"
+				items = User.nearby_items_by_cat(params[:id].to_i, [lat, lng],search_term, distance)
 			end
-		 else 
-		 	items = Category.find(params[:id]).items
+		 else
+		 	if current_user 
+		 		puts "here3"
+		 		items = current_user.nearby_items_by_cat(params[:id].to_i, nil, search_term, distance)
+			else
+		 		#fix me, need to call search term to
+		 		items = Category.find(params[:id]).items
+			 end
 		 	if items
 		 		lat = items[1].user.latitude;
 		 		lng = items[1].user.longitude;
