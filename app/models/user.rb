@@ -9,12 +9,12 @@ class User < ApplicationRecord
   geocoded_by :address
   after_validation :geocode
 
-  def self.nearby_items_by_cat(id, coords, search_term, distance = 50)
+  def self.nearby_items_by_cat(id, coords, search_term, deposit, price, distance = 50)
     tempUser = User.new(latitude: coords[0], longitude: coords[1])
-    items = tempUser.nearby_items_by_cat(id, coords, search_term, distance)
+    items = tempUser.nearby_items_by_cat(id, coords, search_term, deposit, price, distance)
   end
 
-  def nearby_items_by_cat(id, coords, search, distance = 50)
+  def nearby_items_by_cat(id, coords, search, deposit, price, distance = 50)
     if coords != nil
       self.latitude = coords[0]
       self.longitude = coords[1]
@@ -24,13 +24,21 @@ class User < ApplicationRecord
         item.is_published?
     end
     if id != nil
-          puts "here1"
-          filtered_items = filtered_items.select do |item|
+      filtered_items = filtered_items.select do |item|
           item.categories.pluck(:id).include?(id)
       end
     end
+    if deposit != nil
+      filtered_items = filtered_items.select do |item|
+          item.deposit <= deposit
+      end
+    end
+   if price != nil
+      filtered_items = filtered_items.select do |item|
+          item.price <= price
+      end
+    end
    if search != "" || search != nil
-      puts "here2"
       filtered_items = filtered_items.select do |item|
         item.name.downcase.include?(search.downcase)
       end

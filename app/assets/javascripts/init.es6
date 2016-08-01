@@ -29,6 +29,14 @@ $(document).on("ready", function(){
 		}
 
 	}
+
+	window.onresize = function() {
+    if (window.innerHeight >= 820) { /* ... */ }
+    if (window.innerWidth <= 1130) {  
+    	// $('.navbar-collapse').removeClass("collapse");
+    	// $('.navbar-collapse').addClass("collapsed");
+    /* ... */ }
+}
 });
 
 function getGeoLocation(position) {

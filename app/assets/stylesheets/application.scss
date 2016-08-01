@@ -10,106 +10,23 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
- *= require material_icons
+ *= require material_icons 
+
+
+ *= require bootstrap_and_overrides.scss
+ *= require categories.scss
+ *= require devise.scss
+ *= require footer.scss
+ *= require header.scss
+ *= require items.scss
+ *= require messages.scss
+ *= require static.scss
+ *= require homepage.scss
+ *= require responsive.scss
+
+
  */
 
-@import 'config';
-
-html, p, div{
-	font-family: Verdana, Helvetica, sans-serif;
-
-}
-h1, h2, h3, h4, h5, h6{
-	font-family: Lao MN, Helvetica, sans-serif;
-}
-
-.main-content{
-	position:relative;
-	top: -40px;
-	display: inline-block;
-	width: 100%;
-	height: 150vh;
-	overflow: scroll;
-	background-color: $light-gray;
-	padding: 15px;
-	background-size: cover;
-	border-style: solid;
-	border-width: 1px 0 0;
-	border-color: $dark-gray;
-
-}
-
-
-.btn-blue{
-	border-style: solid;
-	border-color: $celebration-blue;
-	border-width: 2px;
-	height: 40px;
-	margin: 20px 0;
-	background-color: white;
-}
-.btn-blue:hover{
-	background-color: $celebration-blue;	
-
-}
-.uppercase{
-	text-transform: uppercase;
-}
-.bold{
-	font-weight: bold;
-}
-.truncated {
-  width: 250px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.category-row{
-	width: 100%;
-	border-style: solid;
-	border-width: 2px 0;
-	border-color: $light-gray;
-	height: 50px;
-	background-size: cover;
-}
-div.categories{
-	position: relative;
-	left: 50px;
-}
-
-div.category{
-	position: relative;
-	top: 10px;
-	display: inline-block;
-	margin: 0 20px;
-}
-
-.category > a{
-	color: black;
-}
-
-.navbar-nav>li.category>a:hover{
-	text-decoration: none;
-	color: $party-pink;
-	
-}
-.center.row{
-	text-align: center;
-}
-div.deactivated{
-	background-color: $light-gray;
-	border: 1px solid $dark-gray; 
-	margin: 2px;
-	padding: 3px;
-}
-div.white{
-	background-color: white;
-	border: 1px solid $dark-gray; 
-	margin: 2px;
-	padding: 3px;
-}
 
 
 

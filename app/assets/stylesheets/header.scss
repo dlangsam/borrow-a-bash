@@ -7,16 +7,39 @@
 	position: relative;
 	right: -20px;
 }
+// .navbar-brand{
+// 	height: 60px;
+// }
+// .right-btns{
+// 	position:relative;
+// 	top:-100px;
+// }
+// .form-control.header-search{
+// 	width: 300px;
+// }
 
-@media screen and (min-width: 786px){
+
+
+@media screen and (min-width: 800px){
 	.navbar-brand{
 		height: 80px;
 	}
+	// .navbar-form.search{
+	// 	position: relative;
+	// 	top: 60px;
+	// 	left: -400px;
+	// }
+
+
 }
-@media screen and (min-width: 1186px){
-	.navbar-brand{
-		height: 80px;
-	}
+@media screen and (min-width: 1130px){
+	// 	form > .search{
+	// 	position: relative;
+	// 	top: 0px;
+	// 	left: 0px;
+	// }
+
+	
 }
 
 

@@ -35,5 +35,10 @@ span.cat-btns{
 
 }
 .search-filter{
-	height: 100vh;
+	height: 140vh;
+	font-size: 12px;
+	color: $happy-green;
+}
+.search-filter > div >button, input{
+	color: black;
 }

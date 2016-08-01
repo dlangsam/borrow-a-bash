@@ -3,7 +3,19 @@ class CategoriesApiController < ApplicationController
 		category = params[:category]
 		if category
 		  category = category.to_i
-		end		
+		end	
+		deposit = params[:deposit]
+		if deposit != ""
+		  deposit = deposit.to_f
+		else
+			deposit = nil
+		end	
+		price = params[:price]
+		if price != ""
+		  price = price.to_f
+		else
+			price = nil
+		end				
 		distance = params[:miles]
 		if distance != nil
 			distance = distance.to_f
@@ -21,16 +33,13 @@ class CategoriesApiController < ApplicationController
 		end
 		if  lat != nil && lng != nil
 		 	if current_user
-		 		puts "here1"
-		 		items = current_user.nearby_items_by_cat(category, [lat, lng], search_term, distance)
+		 		items = current_user.nearby_items_by_cat(category, [lat, lng], search_term, deposit, price, distance)
 			else
-				puts "here2"
-				items = User.nearby_items_by_cat(category, [lat, lng],search_term, distance)
+				items = User.nearby_items_by_cat(category, [lat, lng],search_term, deposit, price, distance)
 			end
 		 else
 		 	if current_user 
-		 		puts "here3"
-		 		items = current_user.nearby_items_by_cat(category, nil, search_term, distance)
+		 		items = current_user.nearby_items_by_cat(category, nil, search_term, deposit, price, distance)
 			else
 		 		#fix me, need to call search term to
 		 		items = Category.find(params[:id]).items

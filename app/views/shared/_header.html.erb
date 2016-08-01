@@ -18,12 +18,12 @@
       <form class="navbar-form navbar-left" action = "/categories">
       <div class = "search">
         <div class="form-group">
-          <input type="text" class="form-control js-search-term" name = "search_word" placeholder="What are you looking for?" value = "<%= @search_term if @search_term%>">
+          <input type="text" class="form-control js-search-term js-header-search header-search" name = "search_word"  value = "<%= @search_term if @search_term%>">
         </div>
-        <button class="btn btn-default btn-blue">Search</button>
+        <button class="btn btn-default btn-blue js-header-search">Search</button>
         </div>
       </form>
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right right-btns">
 
       		<%if user_signed_in? %>
       			<%= render("shared/signed_in_header") %>

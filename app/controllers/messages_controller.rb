@@ -35,6 +35,7 @@ class MessagesController < ApplicationController
 		@message.sender_id = current_user.id
 		@message.recipient_id = recipient.id
 		if @message.save
+			MessagesMailer.new_message_email(@message).deliver_now
 			redirect_to messages_url
 		else
 			flash[:message] = 'Error sending message.'

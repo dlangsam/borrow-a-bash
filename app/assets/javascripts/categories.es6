@@ -15,17 +15,19 @@ $(document).on("turbolinks:load", function(){
 					"Location unavailable"
 				},options)
 		}else{ 
-			var search_term = $('.js-search').val();
+			var searchTerm = $('.js-search').val();
 			var zip = $('.js-zip').val();
 			var miles = $('.js-distance').val();
-			var cat_id = $('.js-cat-id').data("id");
-			console.log("Cat id" + cat_id);
-			var api_url ="/api/categories"  + "?category=" + cat_id + "&miles=" + encodeURI(miles) + "&zip="
-			 +zip + "&search=" + encodeURI(search_term);
-			console.log(api_url);
+			var catId = $('.js-cat-id').data("id");
+			var maxPrice = $('.js-rent').val();
+			var maxDeposit = $('.js-deposit').val();
+			var apiUrl ="/api/categories"  + "?category=" + catId + "&miles=" + encodeURI(miles) + "&zip="
+			 +zip + "&search=" + encodeURI(searchTerm) + "&deposit=" + encodeURI(maxDeposit) 		
+			 + "&price=" + encodeURI(maxPrice);
+			console.log(apiUrl);
 			$.ajax({
 				method: "get",
-				url: api_url,
+				url: apiUrl,
 				success: function(response){
 					updateSearchItems(response)		
 				},
@@ -45,19 +47,20 @@ $(document).on("turbolinks:load", function(){
 })
 function searchWithCurrentLocation(position){
 		
-		var search_term = $('.js-search-term').val();
+		var searchTerm = $('.js-search-term').val();
 		var miles = $('.js-distance').val();
-		var cat_id = $('.js-cat-id').data("id");
-		console.log("CAt id:" + cat_id);
-		console.log("s:" + search_term);
+		var catId = $('.js-cat-id').data("id");
+		var maxPrice = $('.js-rent').val();
+		var maxDeposit = $('.js-deposit').val();
 		var lat = encodeURI(position.coords.latitude.toString());
 		var lng = encodeURI(position.coords.longitude.toString());
-		var api_url ="/api/categories"  + "?category=" + cat_id + "&miles=" + encodeURI(miles) + "&lat="
-			 + lat + "&lng=" + lng + "&search=" + encodeURI(search_term);
-		console.log(api_url);
+		var apiUrl ="/api/categories"  + "?category=" + catId + "&miles=" + encodeURI(miles) + "&lat="
+			 + lat + "&lng=" + lng + "&search=" + encodeURI(searchTerm) + "&deposit=" + encodeURI(maxDeposit)
+			+ "&price=" + encodeURI(maxPrice);
+		console.log(apiUrl);
 		$.ajax({
 			method: "get",
-			url: api_url,
+			url: apiUrl,
 			success: function(response){
 				updateSearchItems(response, position)		
 			}
@@ -72,6 +75,7 @@ function searchWithCurrentLocation(position){
 function updateSearchItems(response){
 		console.log(response);
 		initMapByCoords(response.location);
+		$('.js-header-search').hide();
 		$('.js-cat-items').empty();
 		response.items.forEach(function(item){
 			var item_html = `<div class = "white user-item" >
@@ -79,12 +83,14 @@ function updateSearchItems(response){
 						<a href = "/items/${item.id}" class = "item-link">
 						<div class = "item-box">
 					
-						<div class = "item-desc">
+						
 						<img src = "${item.avatar_url}" 
+
 						 class = "item-image"alt = "${item.name}">
-						
+						<div class = "item-desc">
 						<h5>${item.name}</h5>
-						
+						Deposit: ${item.deposit.toFixed(2)}        
+						Rental fee: ${item.price.toFixed(2)}
 						</div>
 			
 						</div>	
@@ -101,11 +107,17 @@ function updateSearchItems(response){
 			 var marker = new google.maps.Marker({
    				 position: {lat: item.user.latitude, lng: item.user.longitude},
    				 map: map,
-   				 label: item.name
+   				 
     			
   			});
 			 marker.set(map);
-		})
+		});
+		if( response.items.length == 0){
+			var no_items_found = `<div><h1>No items were found. Please try another search.
+			</h1></div>`;
+			$('.js-cat-items').append(no_items_found);
+
+		}
 }
 
 function initMapByCoords(coords){

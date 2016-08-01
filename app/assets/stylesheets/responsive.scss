@@ -1,0 +1,30 @@
+@media print
+{
+  .no-print, .no-print * {
+    display: none !important;
+  }
+}
+
+@media only screen and (max-width : 1200px) {
+
+}
+
+@media only screen and (max-width : 979px) {
+}
+
+@media only screen and (max-width : 767px) {
+}
+
+@media only screen and (max-width : 585px) {
+
+}
+
+@media only screen and (max-width : 480px) {
+  .hide-on-mobile {
+    display: none;
+  }
+}
+
+@media only screen and (max-width : 320px) {
+
+}

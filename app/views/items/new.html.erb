@@ -1,18 +1,60 @@
+ <div class = "white row">
  <%= form_for [@current_user, @item],   :html => { :multipart => true } do |f| %>
-				<%= f.label :name%>
-				<%= f.text_field :name, class: "js-item-name new-item-input item-name"%>
-				<br>
-				<%= f.label :description%>
-				<%= f.text_area :description, class: "js-item-desc new-item-input item-desc" %>
-				<br>Category:
+					<div class = "row">
+	<div class = "col-md-3">
+	<%= f.label :name%>
+	</div>
+	<div class = "col-md-9">
+	<%= f.text_field :name, class: "js-item-name new-item-input"%>
+	</div>
+	</div>
+	<div class = "row">
+	<div class = "col-md-3">
+	<%= f.label :description%>
+	</div>
+	<div class = "col-md-9">
+	<%= f.text_area :description, class: "js-item-desc new-item-input item-desc" %>
+	</div>
+	</div>
+
+	<div class = "row">
+	<div class = "col-md-3">
+	<%= f.label :deposit%>
+	</div>
+	<div class = "col-md-9">
+	<%= f.number_field :deposit, class: "new-item-input item-deposit"%>
+	</div>
+	</div>
+	<div class = "row">
+	<div class = "col-md-3">
+	<%= f.label :price%>
+	</div>
+	<div class = "col-md-9">
+	<%= f.number_field :price, class: "new-item-input item-price"%>
+	</div>
+	</div>
+	<div class = "row">
+	<div class = "col-md-3">
+	Category:
+	</div>
+	<div class = "col-md-9 cat-list">
+
+	
 				<select name = "categories">
 				<% Category.all.each do |c| %>
 				 <option value="<%=c.id%>"><%=c.name%></option>
 				<% end %>
-				</select><br>
-				<%= f.label :avatar,'Upload an image' %>	
-	 			 <%= f.file_field :avatar %>
-				<%= f.hidden_field :user_id, value: @current_user.id, class: "js-user-id"%>
-				<br>
+				</select>
+					<div><br>		
+	<%= f.label :avatar,'Upload new image' %>	
+	<%= f.file_field :avatar %>
+	<%= f.hidden_field :user_id, value: @current_user.id, class: "js-user-id"%>
+		</div>
+	</div>
+	</div>
+	
+				<div class = "row center">
 				<%= f.button id: "form-button", class: " btn btn-blue" %>
+				</div>
 		<%end%>
+</div>

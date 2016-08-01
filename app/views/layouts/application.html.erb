@@ -15,10 +15,11 @@
       <%= render("shared/categories") %>
       <div class = "row">
       <div class= "col-md-12 main-content">
-
+      <div class= "devise">
       <% flash.each do |key, val| %>
         <%= content_tag :div, val, id: key, style: "color:  #ff6699;" %>
       <% end %>
+      </div>
       
     	<%= yield %>
       </div></div>
