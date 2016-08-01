@@ -1,6 +1,13 @@
 class CategoriesController < ApplicationController
+
 	def show
-		@category = Category.find(params[:id])
+		@search_term = params[:search_word]
+		puts "Your search term is  #{@search_term}"
+		if params[:id] != nil
+			@category = Category.find(params[:id])
+		else
+			@category = nil
+		end
 		@zip = ""
 		if current_user
 			@zip = "#{current_user.get_zip_code}"

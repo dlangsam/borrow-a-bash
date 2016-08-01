@@ -20,7 +20,7 @@ $(document).on("turbolinks:load", function(){
 			var miles = $('.js-distance').val();
 			var cat_id = $('.js-cat-id').data("id");
 			console.log("Cat id" + cat_id);
-			var api_url ="/api/categories/" + cat_id + "?miles=" + encodeURI(miles) + "&zip="
+			var api_url ="/api/categories"  + "?category=" + cat_id + "&miles=" + encodeURI(miles) + "&zip="
 			 +zip + "&search=" + encodeURI(search_term);
 			console.log(api_url);
 			$.ajax({
@@ -44,13 +44,16 @@ $(document).on("turbolinks:load", function(){
 
 })
 function searchWithCurrentLocation(position){
+		
+		var search_term = $('.js-search-term').val();
 		var miles = $('.js-distance').val();
 		var cat_id = $('.js-cat-id').data("id");
-			console.log("CAt id:" + cat_id);
+		console.log("CAt id:" + cat_id);
+		console.log("s:" + search_term);
 		var lat = encodeURI(position.coords.latitude.toString());
 		var lng = encodeURI(position.coords.longitude.toString());
-		var api_url ="/api/categories/" + cat_id + "?miles=" + encodeURI(miles) + "&lat="
-			 + lat + "&lng=" + lng;
+		var api_url ="/api/categories"  + "?category=" + cat_id + "&miles=" + encodeURI(miles) + "&lat="
+			 + lat + "&lng=" + lng + "&search=" + encodeURI(search_term);
 		console.log(api_url);
 		$.ajax({
 			method: "get",
@@ -77,6 +80,8 @@ function updateSearchItems(response){
 						<div class = "item-box">
 					
 						<div class = "item-desc">
+						<img src = "${item.avatar_url}" 
+						 class = "item-image"alt = "${item.name}">
 						
 						<h5>${item.name}</h5>
 						

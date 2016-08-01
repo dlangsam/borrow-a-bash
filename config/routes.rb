@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   get "/items/:id/message/new", to: "items#message"
   get "/messages/outgoing", to: "messages#outbox"
   get "/messages/:id/reply", to:"messages#reply"
-  resources :categories, only: [:index, :show]
+  get "/categories(/:id)"       , to: "categories#show", as: "category"
+
   resources :messages, only: [:index, :show, :new, :create]
   resources :users, only: [] do
 		resources :items
@@ -17,7 +18,7 @@ Rails.application.routes.draw do
 	scope "/api" do
 		patch "/items/:id/remove_image", to: "items_api#remove_image"
 		patch "/items/:id/change_activation", to: "items_api#change_published"
-		get "/categories/:id", to: "categories_api#show"
+		get "/categories", to: "categories_api#show"
 		resources :users, controller: "users_api", only: [] do
 			resources :items, controller: "items_api" 
 		end

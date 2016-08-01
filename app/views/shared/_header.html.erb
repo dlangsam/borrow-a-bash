@@ -15,12 +15,12 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <form class="navbar-form navbar-left">
+      <form class="navbar-form navbar-left" action = "/categories">
       <div class = "search">
         <div class="form-group">
-          <input type="text" class="form-control js-search" placeholder="Search">
+          <input type="text" class="form-control js-search-term" name = "search_word" placeholder="What are you looking for?" value = "<%= @search_term if @search_term%>">
         </div>
-        <button type="submit" class="btn btn-default btn-blue">Submit</button>
+        <button class="btn btn-default btn-blue">Search</button>
         </div>
       </form>
       <ul class="nav navbar-nav navbar-right">

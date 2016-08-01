@@ -11,13 +11,10 @@ class User < ApplicationRecord
 
   def self.nearby_items_by_cat(id, coords, search_term, distance = 50)
     tempUser = User.new(latitude: coords[0], longitude: coords[1])
-    items = tempUser.nearby_items_by_cat(id, coords, distance)
+    items = tempUser.nearby_items_by_cat(id, coords, search_term, distance)
   end
 
   def nearby_items_by_cat(id, coords, search, distance = 50)
-    puts "ID:#{id}"
-    puts "Dist: #{distance}"
-    puts "Search: #{search}"
     if coords != nil
       self.latitude = coords[0]
       self.longitude = coords[1]
@@ -26,16 +23,19 @@ class User < ApplicationRecord
     filtered_items = nearby_items(distance).select do |item|
         item.is_published?
     end
-    if id != 0
-      filtered_items = nearby_items(distance).select do |item|
-        item.categories.pluck(:id).include?(id)
+    if id != nil
+          puts "here1"
+          filtered_items = filtered_items.select do |item|
+          item.categories.pluck(:id).include?(id)
+      end
     end
-  end
-   if search != nil
-      filtered_items = nearby_items(distance).select do |item|
+   if search != "" || search != nil
+      puts "here2"
+      filtered_items = filtered_items.select do |item|
         item.name.downcase.include?(search.downcase)
+      end
     end
-  end
+    filtered_items 
   end
   def nearby_items(distance = 50)
     nearby_users(distance).map{|user| user.items}.flatten

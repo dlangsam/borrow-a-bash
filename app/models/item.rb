@@ -27,6 +27,9 @@ class Item < ApplicationRecord
   	 	url = "#{url}&key=#{ENV.fetch('GOOGLE_API_KEY')}"
   	  
      end
+    def avatar_url
+        avatar.url(:medium)
+     end
 
  
 

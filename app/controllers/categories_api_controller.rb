@@ -1,6 +1,14 @@
 class CategoriesApiController < ApplicationController
-	def show		
-		distance = params[:miles].to_f
+	def show
+		category = params[:category]
+		if category
+		  category = category.to_i
+		end		
+		distance = params[:miles]
+		if distance != nil
+			distance = distance.to_f
+		end
+
 		lat = params[:lat].to_f
 		lng = params[:lng].to_f
 		search_term = params[:search]
@@ -14,15 +22,15 @@ class CategoriesApiController < ApplicationController
 		if  lat != nil && lng != nil
 		 	if current_user
 		 		puts "here1"
-		 		items = current_user.nearby_items_by_cat(params[:id].to_i, [lat, lng], search_term, distance)
+		 		items = current_user.nearby_items_by_cat(category, [lat, lng], search_term, distance)
 			else
 				puts "here2"
-				items = User.nearby_items_by_cat(params[:id].to_i, [lat, lng],search_term, distance)
+				items = User.nearby_items_by_cat(category, [lat, lng],search_term, distance)
 			end
 		 else
 		 	if current_user 
 		 		puts "here3"
-		 		items = current_user.nearby_items_by_cat(params[:id].to_i, nil, search_term, distance)
+		 		items = current_user.nearby_items_by_cat(category, nil, search_term, distance)
 			else
 		 		#fix me, need to call search term to
 		 		items = Category.find(params[:id]).items
@@ -39,7 +47,7 @@ class CategoriesApiController < ApplicationController
 			render status: 400, json: {error: "Items not found"}
 		else
 			render :json => {
-			:items => items.as_json(:include => :user),
+			:items => items.as_json(:include => :user, :methods => :avatar_url),
 			:location => {:lat => lat, :lng => lng}
 			}
 		end		

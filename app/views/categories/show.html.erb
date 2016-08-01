@@ -1,5 +1,9 @@
 
 <%= render("shared/filter_options") %>
-<div class = "col-md-9 col-xs-12 user-items js-cat-id js-cat-items" data-id="<%=@category.id%>">
+<div class = "col-md-8 col-xs-12 user-items js-cat-id js-cat-items" 
+
+	data-id="<%=@category.id if @category%>">
 
 </div>
+
+			
