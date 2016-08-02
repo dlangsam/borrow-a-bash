@@ -8,9 +8,31 @@
 	margin:  15px;
 	padding: 0 20px;
 }
-.message, .new{
-	border: 1px solid $dark-gray; 
+.message > div{
+	padding: 20px;
+}
+
+.message{
+	margin: 0;
+	border: solid $dark-gray; 
+	border-width: 0 1px 1px 1px;
 	background-color: white;
+}
+.new{
+	border-width: 1px;
+
+}
+.messages.show{
+	border-width:  1px 0 0;
+}
+.message.row1{
+	border: solid $dark-gray;
+	border-width: 1px; 
+}
+
+.messages.show > div{
+	
+	padding: 5px 5px 5px 15px;
 }
 .mail-tabs{
 	background-color: $light-gray;
@@ -18,9 +40,7 @@
 }
 .mail-tabs > .active{
 	background-color: white;
-	border: solid $dark-gray; 
-	border-radius: 5px;
-	border-width: 1px 1px 0px 1px ;
+	
 }
 .mail-tabs > .active > a{
 	margin: 0;
@@ -47,5 +67,9 @@
 }
 .to-label{
 	width: 7%;
+}
+.inbox{
+	border: solid $dark-gray;
+	border-width: 1px 0px 0px 0px; 
 }
 

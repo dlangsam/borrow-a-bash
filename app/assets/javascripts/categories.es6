@@ -1,4 +1,4 @@
-// Place all the behaviors and hooks related to the matching controller here.
+ // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
 var map; 
@@ -7,6 +7,7 @@ $(document).on("turbolinks:load", function(){
 	$('.js-search').on('click', function(){
 		var options = {timeout: 10000000};
 		if($('.js-use-loc').prop("checked")){
+			
 			navigator.geolocation.getCurrentPosition( 
 				function(location){
 					setGeoCookie(location);
@@ -30,7 +31,8 @@ $(document).on("turbolinks:load", function(){
 				method: "get",
 				url: apiUrl,
 				success: function(response){
-					updateSearchItems(response)		
+					updateSearchItems(response);
+					updateMap(response);		
 				},
 				failure: function(error){
 					console.log(error);
@@ -47,7 +49,7 @@ $(document).on("turbolinks:load", function(){
 
 })
 function searchWithCurrentLocation(position){
-		
+		$('.js-header-search').hide();
 		var searchTerm = $('.js-search').val();
 		console.log("b" + searchTerm);
 
@@ -65,7 +67,8 @@ function searchWithCurrentLocation(position){
 			method: "get",
 			url: apiUrl,
 			success: function(response){
-				updateSearchItems(response, position)		
+				updateSearchItems(response);
+				updateMap(response);	
 			}
 			,
 			failure: function(error){
@@ -77,11 +80,12 @@ function searchWithCurrentLocation(position){
 
 function updateSearchItems(response){
 		console.log(response);
-		initMapByCoords(response.location);
-		$('.js-header-search').hide();
+		
+		
 		$('.js-cat-items').empty();
+		var item_html = ""
 		response.items.forEach(function(item){
-			var item_html = `<div class = "white user-item" >
+			item_html += `<div class = "white user-item" >
 
 						<a href = "/items/${item.id}" class = "item-link">
 						<div class = "item-box">
@@ -92,7 +96,8 @@ function updateSearchItems(response){
 						 class = "item-image"alt = "${item.name}">
 						<div class = "item-desc">
 						<h5>${item.name}</h5>
-						Deposit: ${item.deposit.toFixed(2)}        
+						Deposit: ${item.deposit.toFixed(2)} 
+						<br>       
 						Rental fee: ${item.price.toFixed(2)}
 						</div>
 			
@@ -104,25 +109,33 @@ function updateSearchItems(response){
 				item_html += `<p>item.description</p>`;
 			}
 			item_html += `</div></a></div>`;
-			$('.js-cat-items').append(item_html);
+			
 
 			//set markers
-			 var marker = new google.maps.Marker({
-   				 position: {lat: item.user.latitude, lng: item.user.longitude},
-   				 map: map,
-   				 
-    			
-  			});
-			 marker.set(map);
+	
 		});
+
+
+
+
 		if( response.items.length == 0){
-			var no_items_found = `<div><h1>No items were found. Please try another search.
+			item_html += `<div><h1>No items were found. Please try another search.
 			</h1></div>`;
-			$('.js-cat-items').append(no_items_found);
+			
 
 		}
+		$('.js-cat-items').append(item_html);
 }
-
+function updateMap(response){
+	initMapByCoords(response.location);
+	response.items.forEach(function(item){
+		var marker = new google.maps.Marker({
+   		position: {lat: item.user.latitude, lng: item.user.longitude},
+   		map: map,		
+  	});
+	marker.set(map);
+	});
+}
 function initMapByCoords(coords){
 	map = new google.maps.Map(document.getElementById('map'), {
           center: coords,

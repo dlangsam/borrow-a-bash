@@ -24,7 +24,7 @@
 			<%if @inbox %>
  			<%= m.sender.username%>
  			<%else%>
- 			<strong>To:</strong><%=m.recipient.username %>
+ 			<strong>To: </strong><%=m.recipient.username %>
  			<%end%>
  		</div>
  	
@@ -35,14 +35,22 @@
  		<div class = "message-date col-md-2">
  			<strong>
  			<%if m.created_at > DateTime.yesterday %>
- 				<%= m.created_at.strftime("%l:%M %p") %>
+ 				<%= m.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%l:%M %p") %>
  			<%else%>	
-				<%= m.created_at.strftime("%B %e") %>
+				<%= m.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%B %e") %>
 			<%end%>
  			</strong>
 		</div>
 	</a>
 	</div>
+	<% end %>
+	<%if @messages.size == 0 %>
+	<div class = "message row">
+		<div>
+			You have no messages. 
+		</div>
+	</div>
+
 	<%end%>
 
 </div>

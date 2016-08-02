@@ -63,7 +63,7 @@ a.header-btn{
 }
 
 input.header-search{
-	width: 80%;
+	width: 90%;
 	display: inline-block;
 }
 div.heading{
@@ -72,17 +72,18 @@ div.heading{
 }
 .search-form.header{
 	height: 50px;
-	
+	position: relative;
+	top: -25px;
 	
 }
-.search-form.header > div{
-	background-color: $light-gray;
-}
-.search-form.header > button{
+
+.search-form.header > div >.btn{
 	height: 34px;
+	position: relative;
+	top: -1px;
 }
 .button-group{
 	float: left;
-	color: $dark-gray;
+	color: $text-gray;
 }
 

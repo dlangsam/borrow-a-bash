@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "static#index"
-  get "nearby", to: "static#nearby"
+  get "/users", to: "static#index"
   get "/items/:id", to: "items#item"
   get "/items/:search_term", to: "items#search"
   get "/items/:id/message/new", to: "items#message"

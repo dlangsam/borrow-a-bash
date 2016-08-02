@@ -33,6 +33,9 @@
 		  <div class="actions">
 		    <%= f.submit "Log in", class: "btn btn-blue" %>
 		  </div>
+		  <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+  			<%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+		<% end -%>
 		<% end %>		
       </div>
     </div><!-- /.modal-content -->

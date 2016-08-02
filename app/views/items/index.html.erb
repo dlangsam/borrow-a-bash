@@ -1,6 +1,6 @@
+<div class = "all-items">
+<h1> Your Items <a href = "<%=new_user_item_url(current_user)%>" class = "btn btn-blue"> Add an item to share </a></h1>
 
-<h1> Your Items <button class = "btn btn-blue js-add-item"> Add an item to share </button></h1>
-<%= link_to "Add item form", new_user_item_url(current_user.id)%>
 <div>
 
 <%if @items.size > 0 %>
@@ -9,13 +9,15 @@
 	
 	<div class = "white user-item" >
 	<a href = "<%=user_item_url(current_user.id, item.id)%>" class = "item-link">
-		<div class = "item-box">    
+		<div class = "item-box"> 
+			<div class = "item-content">   
 			<%= image_tag item.avatar.url(:medium), class:"item-image" %>
 			<div class = "item-desc">
 			<h5><%= item.name %></h5>
-			Deposit: <%=sprintf('%.2f', item.deposit)%> Rental fee: <%=sprintf('%.2f', item.price)%>
+			Deposit: <%=sprintf('%.2f', item.deposit)%><br>
+			 Rental fee: <%=sprintf('%.2f', item.price)%>
 			</div>
-			
+			</div>
 		</div>	
 		</a>
 	</div>
@@ -28,63 +30,4 @@
 
 
 
-<div class="modal fade js-modal js-new-item-modal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <div class="modal-header modal-login-header">
-        <!-- Close button -->
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span>&times;</span>
-        </button>
-
-        <h2>New Item</h2>
-      </div>
-
-		   <div class="modal-body modal-new-item">
-		   <%= form_for [@current_user, @item], :remote => true,  :html => { :multipart => true } do |f| %>
-				<%= f.label :name%>
-				<%= f.text_field :name, class: "js-item-name new-item-input item-name"%>
-				<br>
-				<%= f.label :description%>
-				<%= f.text_area :description, class: "js-item-desc new-item-input item-desc" %>
-				<br>
-			
-				
-				<%= f.label :category_ids,'Category' %>	
-	 			<%= f.collection_select :category_ids, Category.all, :id, :name, class: "js-item-cat" %><br>
-				<%= f.hidden_field :user_id, value: @current_user.id, class: "js-user-id"%>
-				<br>
-				<%= f.button id: "form-button", class: "js-add-new-item btn btn-blue" %>
-		<%end%>				
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-<div class="modal fade js-modal js-new-item-image-modal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <div class="modal-header modal-login-header">
-        <!-- Close button -->
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span>&times;</span>
-        </button>
-
-        <h2>Do you want to add an image?</h2>
-      </div>
-
-		   <div class="modal-body modal-new-item">
-		   <%= form_for [@current_user, @item], :remote => true,  :html => { :multipart => true } do |f| %>
-				<%= f.label :avatar,'Upload an image' %>	
-	 			 <%= f.file_field :avatar %>
-				<%= f.hidden_field :user_id, value: @current_user.id, class: "js-user-id"%>
-				<br>
-				<%= f.button id: "form-button", class: "js-add-new-item-image btn btn-blue" %>
-				<%= f.button class: "js-cancel btn btn-green" %>
-		<%end%>				
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+</div>

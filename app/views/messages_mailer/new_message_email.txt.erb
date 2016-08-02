@@ -1,6 +1,7 @@
 Dear <%=@message.recipient.username%>,
 <br>
-You have a new message from <%@message.sender.username%> at <%=link_to "BorrowABash", message_url(@message)%>.
+You have a new message from <%=@message.sender.username%> at 
+<%= link_to "BorrowABash", message_url(@message)%>.
 <br>
 Love,
 <br>

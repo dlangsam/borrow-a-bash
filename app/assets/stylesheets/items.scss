@@ -3,14 +3,29 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import 'config';
+.all-items{
+	margin: 15px;
+}
+.white.row.item-form{
+
+		padding: 20px;
+}
+.white.row.item-form > form > .row{
+
+		padding: 20px;
+}
 
 .user-item{
 	display: inline-block;
 	width: 220px;
-	height: 280px;
+	height: 300px;
 	position: relative;
 	float: left;
-	margin: 5px;
+
+}
+div.white.user-item{
+	margin: 10px;
+
 }
 
 .item-image{
@@ -23,7 +38,10 @@
 	height: 300px;
 
 }
-
+.item-content{
+	margin-left: auto;
+	margin-right: auto;
+}
 
 .item-box > p {
 	color: black;

@@ -11,7 +11,7 @@ h1, h2, h3, h4, h5, h6{
 
 .homepage-content{
 	position: relative;
-	top: -40px;
+	top: -15px;
 	height: 400px;
 	padding: 5px;
 	background-image: url("balloon_sky.jpeg");
@@ -21,9 +21,9 @@ h1, h2, h3, h4, h5, h6{
 }
 button.homepage{
 	position: relative;
-	height: 35px;
-	top: 20px;
-	left: 300px;
+	height: 34px;
+	top: 17px;
+	left: 310px;
 	border-color: $happy-green;
 	background-color: $happy-green;
 
@@ -35,6 +35,7 @@ button.homepage{
 	button.homepage{
 		border-color: $celebration-blue;
 		background-color: $celebration-blue;
+
 	}
 
 
@@ -60,7 +61,6 @@ input.homepage{
 
 .main-content{
 	position:relative;
-	top: -40px;
 	display: inline-block;
 	width: 100%;
 	height: 150vh;
@@ -113,14 +113,13 @@ div.categories{
 }
 
 div.category{
-	position: relative;
-	top: 10px;
+
 	display: inline-block;
 	margin: 0 20px;
 }
 
 .category > a{
-	color: black;
+	color: $text-gray;
 }
 
 .navbar-nav>li.category>a:hover{
@@ -142,4 +141,8 @@ div.white{
 	border: 1px solid $dark-gray; 
 	margin: 2px;
 	padding: 3px;
+}
+
+.bumper{
+	height: 12px;
 }

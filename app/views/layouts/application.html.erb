@@ -14,15 +14,18 @@
   		<%= render("shared/header") %>
       <%= render("shared/categories") %>
       <div class = "row">
-      <div class= "col-md-12 main-content">
-      <div class= "devise">
+        <div class= "row devise">
       <% flash.each do |key, val| %>
         <%= content_tag :div, val, id: key, style: "color:  #ff6699;" %>
       <% end %>
       </div>
+      <div class= "col-md-12 main-content">
+    
       
     	<%= yield %>
       </div></div>
+      <div class = "bumper row">
+      </div>
   		<%= render("shared/footer")%>
 
   		<%= render("shared/login_modal") %>

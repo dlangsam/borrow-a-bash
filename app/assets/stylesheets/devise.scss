@@ -1,10 +1,16 @@
-.edit-profile{
-	position: relative;
-	left: 40px;
+div.white.form-page{
+	padding: 20px;
 }
 
 .btn-form{
 	border-radius: 5px;
 	margin: 2px;
 	background-color: #3399cc;
+}
+.row.devise{
+	position:relative;
+	left: 30px;
+	top: -8px;
+	background-color: white;
+	height:10px;
 }

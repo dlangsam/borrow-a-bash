@@ -1,18 +1,19 @@
-<div class = "edit-profile">
+
+<div class = "white row form-page">
 <h2>Edit profile for <%= current_user.username %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
   <div class="field">
     <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true %>
+    <%= f.text_field :first_name, autofocus: true, class: "form-control" %>
   </div>  <div class="field">
     <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
+    <%= f.text_field :last_name, class: "form-control" %>
   </div>
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email  %>
+    <%= f.email_field :email, class: "form-control"  %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -21,32 +22,32 @@
 
   <div class = "field">
      <%= f.label :address1, 'Street' %><i></i><br />
-    <%= f.text_field :address1%>
+    <%= f.text_field :address1, class: "form-control"%>
   </div>
     <div class = "field">
       <%= f.label :address2, 'Apt, Suite, Etc.' %> <i></i><br />
-    <%= f.text_field :address2%>
+    <%= f.text_field :address2, class: "form-control"%>
   </div>
     <div class = "field">
       <%= f.label :city %> <i></i><br />
-    <%= f.text_field :city%>
+    <%= f.text_field :city, class: "form-control"%>
   </div>
     <div class = "field">
       <%= f.label :state%> <i></i><br />
-    <%= f.text_field :state%>
+    <%= f.text_field :state, class: "form-control"%>
   </div>
    <div class = "field">
       <%= f.label :zip_code%> <i></i><br />
-    <%= f.text_field :zip_code%>
+    <%= f.text_field :zip_code, class: "form-control"%>
   </div>
 
   <div class="field">
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
+    <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
   </div>
   <div class="field">
     <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
     <% if @minimum_password_length %>
       <br />
       <em><%= @minimum_password_length %> characters minimum</em>
@@ -55,19 +56,20 @@
 
   <div class="field">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
   </div>
 
 
 
   <div class="actions">
-    <%= f.submit "Update", class: "btn btn-form"%>
+    <%= f.submit "Update", class: "btn btn-blue"%>
   </div>
 <% end %>
 
 <h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-form" %></p>
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-blue" %></p>
 
-<%= link_to "Back", :back %>
+
 </div>
+
