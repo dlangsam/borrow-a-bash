@@ -24,7 +24,7 @@ $(document).on("turbolinks:load", function(){
 				url: apiUrl,
 				success: function(response){
 					updateSearchItems(response);
-					updateMap(response);		
+					updateMap(response, miles);		
 				},
 				failure: function(error){
 					console.log(error);
@@ -106,7 +106,7 @@ function updateSearchItems(response){
 		}
 		$('.js-cat-items').append(item_html);
 }
-function updateMap(response){
+function updateMap(response, distance){
 	initMapByCoords(response.location);
 	response.items.forEach(function(item){
 		var marker = new google.maps.Marker({
@@ -115,6 +115,16 @@ function updateMap(response){
   	});
 	marker.set(map);
 	});
+	var zoom = 8;
+	if (distance < 1)zoom = 16;
+	else if (distance < 3)zoom = 15;
+	else if (distance < 5)zoom = 14;
+	else if (distance < 10)zoom = 13;
+	else if (distance < 20)zoom = 12;
+	else if (distance < 50)zoom = 10;
+	else zoom = 8;
+
+	map.setZoom(zoom);
 }
 function initMapByCoords(coords){
 	map = new google.maps.Map(document.getElementById('map'), {

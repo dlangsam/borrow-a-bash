@@ -23,11 +23,6 @@ $(document).on("ready", function(){
 	function handleError(error){
 		console.log("There is an error.");
 		console.log(error);
-		if(error.code == 1){
-			var html = `<h2>Come on! Give me your location. </h2>`;
-			$("body").append(html);
-		}
-
 	}
 
 	window.onresize = function() {

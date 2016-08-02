@@ -63,7 +63,6 @@ input.homepage{
 	position:relative;
 	display: inline-block;
 	width: 100%;
-	height: 150vh;
 	overflow: scroll;
 	background-color: $light-gray;
 	padding: 15px;
@@ -82,6 +81,20 @@ input.homepage{
 	height: 40px;
 	margin: 20px 0;
 	background-color: white;
+}
+.btn-green{
+	border-style: solid;
+	border-color: $happy-green;
+	border-width: 2px;
+	height: 40px;
+	margin: 20px 0;
+	background-color: white;
+}
+a.btn-green{
+	color:black;
+}
+.btn-green:hover{
+	background-color: $happy-green;	
 }
 .btn-blue:hover{
 	background-color: $celebration-blue;	
@@ -144,5 +157,5 @@ div.white{
 }
 
 .bumper{
-	height: 12px;
+	height: 40px;
 }
