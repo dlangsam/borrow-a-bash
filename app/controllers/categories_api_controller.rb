@@ -1,8 +1,10 @@
 class CategoriesApiController < ApplicationController
 	def show
 		category = params[:category]
-		if category
+		if category != ""
 		  category = category.to_i
+		else 
+			category = nil
 		end	
 		deposit = params[:deposit]
 		if deposit != ""

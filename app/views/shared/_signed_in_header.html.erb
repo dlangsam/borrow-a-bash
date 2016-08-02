@@ -15,8 +15,9 @@
 
 <li class="dropdown user-dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-    <i class="material-icons md-36 account-logo">account_circle</i><br> Welcome,<br>  <%= current_user.username %> <span class="caret"></span></a>
+    <i class="material-icons md-36 account-logo">account_circle</i><br><%= current_user.username %><span class="caret"></span></a>
     <ul class="dropdown-menu">
+       
         <li><a href="/users/edit">My Profile</a></li>
 	    <li><a href="/users/sign_out" data-method="delete">Sign Out</a><li>
     </ul>

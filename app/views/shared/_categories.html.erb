@@ -2,19 +2,20 @@
 <hr>
 
 <div class = "row center category">
-<nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
+  <!--   <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
         Categories
       </button>
-    </div>
+    </div> -->
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse cat-btns" id="bs-example-navbar-collapse-2">
+
+     <div class = "button-group">
       <ul class="nav navbar-nav">
+    
    
       	<%Category.all.each do  |category|%>
 	<li class="category uppercase">
@@ -22,12 +23,12 @@
 		<%=category.name%>
 	</a></li>
 	<%end%>
-
+      
 
       </ul>
-      
+      </div>
     </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+<!-- /.container-fluid -->
+
 </div>
 

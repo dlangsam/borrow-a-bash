@@ -10,18 +10,51 @@
 }
 
 @media only screen and (max-width : 979px) {
+
+}
+@media only screen and (max-width : 834px) {
+	.button-group{
+		width: 400px;
+	}
+}
+@media only screen and (max-width : 830px) {
+	.navbar-brand{
+		height: 70px;
+	}
 }
 
+
 @media only screen and (max-width : 767px) {
+	.right-btns i {
+		display: none;
+	}
+	.right-btns li a {
+		text-align: left;
+	}
+	.navbar-brand{
+		height: 60px;
+	}
 }
 
 @media only screen and (max-width : 585px) {
-
+	.navbar-brand{
+		height: 50px;
+	}
 }
 
 @media only screen and (max-width : 480px) {
   .hide-on-mobile {
     display: none;
+  }
+}
+
+@media only screen and (max-width : 461px) {
+  .hide-on-mobile {
+    display: none;
+  }
+  .button-group{
+  	width: 300px;
+
   }
 }
 

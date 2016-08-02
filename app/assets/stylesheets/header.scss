@@ -1,3 +1,5 @@
+
+@import 'config';
 .navbar-default{
 	border-style:none;
 	background-color: white;
@@ -7,41 +9,9 @@
 	position: relative;
 	right: -20px;
 }
-// .navbar-brand{
-// 	height: 60px;
-// }
-// .right-btns{
-// 	position:relative;
-// 	top:-100px;
-// }
-// .form-control.header-search{
-// 	width: 300px;
-// }
-
-
-
-@media screen and (min-width: 800px){
-	.navbar-brand{
-		height: 80px;
-	}
-	// .navbar-form.search{
-	// 	position: relative;
-	// 	top: 60px;
-	// 	left: -400px;
-	// }
-
-
+.navbar-brand{
+	height: 80px;
 }
-@media screen and (min-width: 1130px){
-	// 	form > .search{
-	// 	position: relative;
-	// 	top: 0px;
-	// 	left: 0px;
-	// }
-
-	
-}
-
 
 .account-logo{
 	position: relative;
@@ -91,3 +61,28 @@ a.header-btn{
 .navbar .material-icons{
 	color: #3399cc;
 }
+
+input.header-search{
+	width: 80%;
+	display: inline-block;
+}
+div.heading{
+	height: 100px;
+
+}
+.search-form.header{
+	height: 50px;
+	
+	
+}
+.search-form.header > div{
+	background-color: $light-gray;
+}
+.search-form.header > button{
+	height: 34px;
+}
+.button-group{
+	float: left;
+	color: $dark-gray;
+}
+

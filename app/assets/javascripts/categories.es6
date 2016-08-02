@@ -16,6 +16,7 @@ $(document).on("turbolinks:load", function(){
 				},options)
 		}else{ 
 			var searchTerm = $('.js-search').val();
+			console.log("a" + searchTerm);
 			var zip = $('.js-zip').val();
 			var miles = $('.js-distance').val();
 			var catId = $('.js-cat-id').data("id");
@@ -47,7 +48,9 @@ $(document).on("turbolinks:load", function(){
 })
 function searchWithCurrentLocation(position){
 		
-		var searchTerm = $('.js-search-term').val();
+		var searchTerm = $('.js-search').val();
+		console.log("b" + searchTerm);
+
 		var miles = $('.js-distance').val();
 		var catId = $('.js-cat-id').data("id");
 		var maxPrice = $('.js-rent').val();

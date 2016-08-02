@@ -24,22 +24,30 @@ class User < ApplicationRecord
         item.is_published?
     end
     if id != nil
+        puts "ddddddd------------"
       filtered_items = filtered_items.select do |item|
+        puts item.name
           item.categories.pluck(:id).include?(id)
       end
     end
     if deposit != nil
+      puts "ccccc------------"
       filtered_items = filtered_items.select do |item|
+        puts item.name
           item.deposit <= deposit
       end
     end
    if price != nil
+    puts "bbbbb------------"
       filtered_items = filtered_items.select do |item|
+        puts item.name
           item.price <= price
       end
     end
-   if search != "" || search != nil
+   if search != "" && search != nil
+      puts "aaaaaaaa------------"
       filtered_items = filtered_items.select do |item|
+        puts item.name
         item.name.downcase.include?(search.downcase)
       end
     end
