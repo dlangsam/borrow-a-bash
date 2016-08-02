@@ -5,19 +5,11 @@ var map;
 
 $(document).on("turbolinks:load", function(){
 	$('.js-search').on('click', function(){
-		var options = {timeout: 10000000};
+		
 		if($('.js-use-loc').prop("checked")){
-			
-			navigator.geolocation.getCurrentPosition( 
-				function(location){
-					setGeoCookie(location);
-					searchWithCurrentLocation(location);
-				},function(error){
-					"Location unavailable"
-				},options)
+			getLocationQuickly();		
 		}else{ 
 			var searchTerm = $('.js-search').val();
-			console.log("a" + searchTerm);
 			var zip = $('.js-zip').val();
 			var miles = $('.js-distance').val();
 			var catId = $('.js-cat-id').data("id");
@@ -51,14 +43,12 @@ $(document).on("turbolinks:load", function(){
 function searchWithCurrentLocation(position){
 		$('.js-header-search').hide();
 		var searchTerm = $('.js-search').val();
-		console.log("b" + searchTerm);
-
 		var miles = $('.js-distance').val();
 		var catId = $('.js-cat-id').data("id");
 		var maxPrice = $('.js-rent').val();
 		var maxDeposit = $('.js-deposit').val();
-		var lat = encodeURI(position.coords.latitude.toString());
-		var lng = encodeURI(position.coords.longitude.toString());
+		var lat = encodeURI(position.lat.toString());
+		var lng = encodeURI(position.lng.toString());
 		var apiUrl ="/api/categories"  + "?category=" + catId + "&miles=" + encodeURI(miles) + "&lat="
 			 + lat + "&lng=" + lng + "&search=" + encodeURI(searchTerm) + "&deposit=" + encodeURI(maxDeposit)
 			+ "&price=" + encodeURI(maxPrice);
@@ -109,20 +99,10 @@ function updateSearchItems(response){
 				item_html += `<p>item.description</p>`;
 			}
 			item_html += `</div></a></div>`;
-			
-
-			//set markers
-	
 		});
-
-
-
-
 		if( response.items.length == 0){
 			item_html += `<div><h1>No items were found. Please try another search.
 			</h1></div>`;
-			
-
 		}
 		$('.js-cat-items').append(item_html);
 }
@@ -144,10 +124,46 @@ function initMapByCoords(coords){
 
 
 }
+function positionToCoords(position){
+	return { lat:  position.coords.latitude , lng: position.coords.longitude};
+}
 function initMap(position) {
-		var coords = { lat:  position.coords.latitude , lng: position.coords.longitude};
+		var coords = positionToCoords(position);
 		initMapByCoords(coords)
         
  }
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length,c.length);
+        }
+    }
+    return "";
+}
+function getLocationQuickly(){
+	var options = {timeout: 10000000};
+	var lat = getCookie("lat");
+	var lng = getCookie("lng");
+	if(lat && lng){
+		var coords = {lat: lat, lng: lng};
+		initMapByCoords(coords);
+		searchWithCurrentLocation(coords)
+
+	}else{
+ 		navigator.geolocation.getCurrentPosition( 
+				function(location){
+					setGeoCookie(location);
+					searchWithCurrentLocation(positionToCoords(location));
+				},function(error){
+					"Location unavailable"
+				},options)
+ 	}
+}
 
 
