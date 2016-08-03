@@ -5,19 +5,24 @@ var map;
 
 $(document).on("turbolinks:load", function(){
 	$('.js-search').on('click', function(){
+		var searchTerm = $('.js-search').val();
+		var miles = $('.js-distance').val();
+		var catId = $('.js-cat-id').data("id");
+		var maxPrice = $('.js-rent').val();
+		var maxDeposit = $('.js-deposit').val();
+		var miles = $('.js-distance').val();
+		var zip = $('.js-zip').val();
+		var isChecked = $('.js-use-loc').prop("checked");
+		saveSearch(miles, catId, maxPrice, maxDeposit, zip);
 		
-		if($('.js-use-loc').prop("checked")){
+		if(isChecked){
 			getLocationQuickly();		
 		}else{ 
-			var searchTerm = $('.js-search').val();
-			var zip = $('.js-zip').val();
-			var miles = $('.js-distance').val();
-			var catId = $('.js-cat-id').data("id");
-			var maxPrice = $('.js-rent').val();
-			var maxDeposit = $('.js-deposit').val();
+			window.localStorage.setItem("use-current", "false");
+			window.localStorage.setItem("search-term", searchTerm);
 			var apiUrl ="/api/categories"  + "?category=" + catId + "&miles=" + encodeURI(miles) + "&zip="
 			 +zip + "&search=" + encodeURI(searchTerm) + "&deposit=" + encodeURI(maxDeposit) 		
-			 + "&price=" + encodeURI(maxPrice);
+			 + "&price=" + encodeURI(maxPrice)
 			console.log(apiUrl);
 			$.ajax({
 				method: "get",
@@ -33,7 +38,35 @@ $(document).on("turbolinks:load", function(){
 		}		
 	})
 })
+function loadSearch(){
+		var miles = window.localStorage.getItem("miles");
+		var price = window.localStorage.getItem("price");
+		var deposit = window.localStorage.getItem("deposit");
+		var zipCode = window.localStorage.getItem("zip-code");
+		var useCurrent = window.localStorage.getItem("use-current");
+		if(miles != null){
+			$('.js-distance').val(miles);
+		}else{
+			$('.js-distance').val(10);
+		}
+		$('.js-rent').val(price);
+	    $('.js-deposit').val(deposit);
+	    console.log("Use current:" + useCurrent);
+	    if (useCurrent === "true"){$('.js-use-loc').prop("checked", true);}
+	    else $('.js-zip').val(zipCode);
+}
+function saveSearch( miles, categoryID, price, deposit, zipCode){
+	window.localStorage.setItem("miles", miles);
+	window.localStorage.setItem("categoryID", categoryID);
+	window.localStorage.setItem("price", price);
+	window.localStorage.setItem("deposit", deposit);
+	window.localStorage.setItem("zip-code", zipCode);
+	
+}
+
 function searchWithCurrentLocation(position){
+		loadSearch();
+		window.localStorage.setItem("use-current", "true");
 		$('.js-header-search').hide();
 		var searchTerm = $('.js-search').val();
 		var miles = $('.js-distance').val();

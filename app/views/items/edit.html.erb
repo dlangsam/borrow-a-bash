@@ -21,7 +21,7 @@
 	<%= f.label :deposit%>
 	</div>
 	<div class = "col-md-9">
-	<%= f.number_field :deposit,  class: "form-control"%>
+	<%= f.number_field :deposit,  step: 0.01, class: "form-control"%>
 	</div>
 	</div>
 	<div class = "row">
@@ -29,7 +29,7 @@
 	<%= f.label :price%>
 	</div>
 	<div class = "col-md-9">
-	<%= f.number_field :price,  class: "form-control"%>
+	<%= f.number_field :price,  step: 0.01, class: "form-control"%>
 	</div>
 	</div>
 	<div class = "row">
