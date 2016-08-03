@@ -96,8 +96,10 @@ function updateSearchItems(response){
 		if( response.items.length == 0){
 			item_html += `<div><h1>No items were found. Please try another search.
 			</h1></div>`;
-		}
+		}	
 		$('.js-cat-items').append(item_html);
+		var numResults = response.items.length
+		$('.js-cat-number').text(numResults + " items found.");
 }
 function updateMap(response, distance){
 	var coords = {lat:  response.location.lat , lng: response.location.lng};
@@ -127,12 +129,11 @@ function initMapByCoords(coords){
         });
 }
 function positionToCoords(position){
-	return { lat:  position.coords.latitude , lng: position.coords.longitude};
+	return { lat:  parseFloat(position.coords.latitude) , lng: parseFloat(position.coords.longitude)};
 }
 function initMap(position) {
 		var coords = positionToCoords(position);
-		initMapByCoords(coords);
-        
+		initMapByCoords(coords);     
  }
 function getCookie(cname) {
     var name = cname + "=";
@@ -154,8 +155,7 @@ if ($('.js-begin-category-search').length > 0){
 	var lat = getCookie("lat");
 	var lng = getCookie("lng");
 	if(lat && lng){
-		var coords = {lat: lat, lng: lng};
-		initMapByCoords(coords);
+		var coords = {lat: parseFloat(lat), lng: parseFloat(lng)};
 		searchWithCurrentLocation(coords)
 
 	}else{

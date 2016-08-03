@@ -1,4 +1,15 @@
+<div class = "cat-title">
+	<h2>
+	<%if @category%>
+	<%=@category.name.capitalize%>
+	<% else %>
+	All categories
+	<%end%>
+	</h2>
+	<p class = "js-cat-number">
+	</p>
 
+</div>
 <%= render("shared/filter_options") %>
 <div class = "col-md-8 col-xs-12 user-items js-cat-id js-cat-items" 
 
