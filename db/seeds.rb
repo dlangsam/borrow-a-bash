@@ -51,7 +51,8 @@ while( i < 20)
 	while(item < 4)
 		 index = Faker::Number.between(0, 5)
 		 item1 = Item.create(name: Faker::Commerce.product_name, 
-		 	description: Faker::Hipster.sentences)
+		 	description: Faker::Hipster.paragraph, 
+		 	deposit: Faker::Number.between(0, 60), price: Faker::Number.between(0,20) )
 		 item1.categories.push(categories_array[index])
 		 u.items.push(item1)
 		 item +=1
