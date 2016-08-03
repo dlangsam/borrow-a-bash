@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "static#index"
+  get "/.well-known/acme-challenge/:id" => "static#letsencrypt"
   get "/users", to: "static#index"
   get "/items/:id", to: "items#item"
   get "/items/:search_term", to: "items#search"
