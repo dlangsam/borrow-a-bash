@@ -14,11 +14,11 @@
 		<%= image_tag @item.avatar.url(:medium), class:"item-image large" %>
 	</div>
 	<div class = "col-md-4">
-		<div class = "item-box">    
+		<div>    
 			
-			<div class = "item-desc">
-			<div class = "center row"><h4><%= @item.name %></h4></div>
 			<div>
+			<div class = "center row"><h4><%= @item.name %></h4></div>
+			<div class = "row">
 			<%=@item.description%>
 			<br>
 			Deposit: <%=sprintf('%.2f', @item.deposit)%> 
@@ -26,6 +26,7 @@
 			Rental fee: <%=sprintf('%.2f', @item.price)%>
 			<br>
 			This item is shared by: <%=@item.user.username%>
+			<br>
 			<%=link_to "Send a message", "/items/#{@item.id}/message/new"%>
 			</div>
 		</div>
