@@ -22,7 +22,7 @@ class User < ApplicationRecord
       self.longitude = coords[1]
     end
     if id != nil
-      filtered_items = ItemCategory.where(item_id: self.nearby_items.pluck(:id), category_id: id).includes(:item).map(&:item).uniq
+      filtered_items = ItemCategory.where(item_id: self.nearby_items(distance).pluck(:id), category_id: id).includes(:item).map(&:item).uniq
     else
       filtered_items = self.nearby_items
     end
