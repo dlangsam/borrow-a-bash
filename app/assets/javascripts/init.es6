@@ -6,6 +6,7 @@ BorrowABashApp.init = function(){
 };
 
 $(document).on("ready", function(){
+
 	if("geolocation" in navigator){
 		console.log("Broswer has geolocation");
 		var options = {timeout: 10000000};
@@ -18,7 +19,10 @@ $(document).on("ready", function(){
 		console.log("Browser doesn't have geolation");
 	}
 	BorrowABashApp.init();
-
+	//if (/^\/categories/.test(window.location.pathname) { // do stuff here }`
+	window.onload = function() {
+		getLocationQuickly();  
+	};
 
 	function handleError(error){
 		console.log("There is an error.");

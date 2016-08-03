@@ -30,15 +30,8 @@ $(document).on("turbolinks:load", function(){
 					console.log(error);
 				}
 			});		
-		}
-		
+		}		
 	})
-
-
-	
-
-
-
 })
 function searchWithCurrentLocation(position){
 		$('.js-header-search').hide();
@@ -107,7 +100,8 @@ function updateSearchItems(response){
 		$('.js-cat-items').append(item_html);
 }
 function updateMap(response, distance){
-	initMapByCoords(response.location);
+	var coords = {lat:  response.location.lat , lng: response.location.lng};
+	initMapByCoords(coords);
 	response.items.forEach(function(item){
 		var marker = new google.maps.Marker({
    		position: {lat: item.user.latitude, lng: item.user.longitude},
@@ -131,15 +125,13 @@ function initMapByCoords(coords){
           center: coords,
           zoom: 8
         });
-
-
 }
 function positionToCoords(position){
 	return { lat:  position.coords.latitude , lng: position.coords.longitude};
 }
 function initMap(position) {
 		var coords = positionToCoords(position);
-		initMapByCoords(coords)
+		initMapByCoords(coords);
         
  }
 function getCookie(cname) {
@@ -157,6 +149,7 @@ function getCookie(cname) {
     return "";
 }
 function getLocationQuickly(){
+if ($('.js-begin-category-search').length > 0){
 	var options = {timeout: 10000000};
 	var lat = getCookie("lat");
 	var lng = getCookie("lng");
@@ -174,6 +167,7 @@ function getLocationQuickly(){
 					"Location unavailable"
 				},options)
  	}
+ }
 }
 
 

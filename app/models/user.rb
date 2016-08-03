@@ -14,21 +14,17 @@ class User < ApplicationRecord
     items = tempUser.nearby_items_by_cat(id, coords, search_term, deposit, price, distance)
   end
 
+  # refactor to use something lie this
+   # ItemCategory.where(item_id: u.nearby_items.pluck(:id), category_id: 3).includes(:item).map(&:item).uniq
   def nearby_items_by_cat(id, coords, search, deposit, price, distance = 50)
     if coords != nil
       self.latitude = coords[0]
       self.longitude = coords[1]
     end
-        #get only published items
-    filtered_items = nearby_items(distance).select do |item|
-        item.is_published?
-    end
     if id != nil
-
-      filtered_items = filtered_items.select do |item|
-        puts item.name
-          item.categories.pluck(:id).include?(id)
-      end
+      filtered_items = ItemCategory.where(item_id: self.nearby_items.pluck(:id), category_id: id).includes(:item).map(&:item).uniq
+    else
+      filtered_items = self.nearby_items
     end
     if deposit != nil
       filtered_items = filtered_items.select do |item|
@@ -51,12 +47,10 @@ class User < ApplicationRecord
     filtered_items 
   end
   def nearby_items(distance = 50)
-    nearby_users(distance).map{|user| user.items}.flatten
+    nearby_users(distance).map{|user| user.items.where(is_published: true)}.flatten
   end
   def nearby_users(distance = 50)
-   User.near([self.latitude, self.longitude], distance).select{
-    |user| user != self
-   }
+   User.where.not(id: self.id).includes(:items).near([self.latitude, self.longitude], distance)
   end
   def get_zip_code
     zip_code
