@@ -23,6 +23,7 @@
 	position: relative;
 	float: left;
 
+
 }
 div.white.user-item{
 	margin: 10px;
@@ -42,6 +43,7 @@ div.white.user-item{
 .item-content{
 	margin-left: auto;
 	margin-right: auto;
+
 }
 
 .item-box > p {
@@ -62,6 +64,7 @@ div.white.user-item{
 
 .item-name{
 	margin-left: 49px;
+
 }
 
 
@@ -69,6 +72,12 @@ div.white.user-item{
 	margin: 5px;
 	color: black;
 	font-size: 12px;
+	white-space: nowrap;
+	width: 200px;
+	  overflow: hidden;
+  	text-overflow: ellipsis;
+	
+
 }
 .listing.row{
 	margin:5px;
