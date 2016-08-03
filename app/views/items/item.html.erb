@@ -10,7 +10,7 @@
 </span>
 </div>
 <div class = "white row">
-	<div class = "col-md-4">
+	<div class = "col-md-4 show-item-image">
 		<%= image_tag @item.avatar.url(:medium), class:"item-image large" %>
 	</div>
 	<div class = "col-md-4">
@@ -18,7 +18,7 @@
 			
 			<div>
 			<div class = "center row"><h4><%= @item.name %></h4></div>
-			<div class = "row">
+			<div class = "row show-item-desc">
 			<%=@item.description%>
 			<br>
 			Deposit: <%=sprintf('%.2f', @item.deposit)%> 
@@ -32,7 +32,7 @@
 		</div>
 	</div>
 	</div>
-	<div class = "col-md-4">
+	<div class = "col-md-4 show-item-image">
 		<img src = "<%=@map_url%>" alt = "location_of_item" class ="item-image large"/>		
 	</div>	
 	</div>
