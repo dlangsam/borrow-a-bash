@@ -5,7 +5,7 @@ BorrowABashApp.init = function(){
 	console.log("BorrowABashApp ONLINE");
 };
 
-$(document).on("ready", function(){
+$(document).on("turbolinks:load", function(){
 
 	if("geolocation" in navigator){
 		console.log("Broswer has geolocation");
@@ -20,9 +20,10 @@ $(document).on("ready", function(){
 	}
 	BorrowABashApp.init();
 	//if (/^\/categories/.test(window.location.pathname) { // do stuff here }`
-	window.onload = function() {
-		getLocationQuickly();  
-	};
+	//FIXME!!!!!!
+	console.log("Get geolocation quickly")
+	getLocationQuickly();  
+	
 
 	function handleError(error){
 		console.log("There is an error.");
