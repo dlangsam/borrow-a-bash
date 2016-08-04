@@ -4,15 +4,15 @@
 var map; 
 
 $(document).on("turbolinks:load", function(){
-	// $('.js-hide-map').on('click', function(){
-	// 	var mapDiv = $('#map');
-	// 	mapDiv.toggleClass("hidden")
-	// 	if(mapDiv.hasClass("hidden")){
-	// 		$('.js-hide-map').text("Show Map");
-	// 	}else{
-	// 		$('.js-hide-map').text("Hide Map");
-	// 	}
-	// });
+	$('.js-hide-map').on('click', function(){
+		var mapDiv = $('#map');
+		mapDiv.toggleClass("hidden")
+		if(mapDiv.hasClass("hidden")){
+			$('.js-hide-map').text("Show Map");
+		}else{
+			$('.js-hide-map').text("Hide Map");
+		}
+	});
 	$('.js-search').on('click', function(){
 		var searchTerm = $('.js-search').val();
 		var miles = $('.js-distance').val();
