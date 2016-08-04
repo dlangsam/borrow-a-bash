@@ -4,7 +4,6 @@
 var map; 
 
 $(document).on("turbolinks:load", function(){
-	console.log("hide map");
 	$('.js-hide-map').on('click', function(){
 		var mapDiv = $('#map');
 		mapDiv.toggleClass("hidden")
