@@ -165,10 +165,12 @@ function updateMap(response, distance){
 	map.setZoom(zoom);
 }
 function initMapByCoords(coords){
-	map = new google.maps.Map(document.getElementById('map'), {
+
+		map = new google.maps.Map(document.getElementById('map'), {
           center: coords,
           zoom: 8
         });
+
 }
 function positionToCoords(position){
 	return { lat:  parseFloat(position.coords.latitude) , lng: parseFloat(position.coords.longitude)};
