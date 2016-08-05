@@ -13,7 +13,8 @@ $(document).on("turbolinks:load", function(){
 			$('.js-hide-map').text("Hide Map");
 		}
 	});
-	$('.js-search').on('click', function(){
+	$('.js-search-btn').on('click', function(){
+		alert("Hello"); console.log("Hello");
 		var searchTerm = $('.js-search').val();
 		var miles = $('.js-distance').val();
 		var catId = $('.js-cat-id').data("id");
