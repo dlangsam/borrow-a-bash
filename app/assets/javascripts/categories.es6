@@ -22,7 +22,7 @@ $(document).on("turbolinks:load", function(){
 		var miles = $('.js-distance').val();
 		var zip = $('.js-zip').val();
 		var isChecked = $('.js-use-loc').prop("checked");
-		//saveSearch(miles, catId, maxPrice, maxDeposit, zip);
+		saveSearch(miles, catId, maxPrice, maxDeposit, zip);
 		
 		if(isChecked){
 			getLocationQuickly();		
@@ -55,7 +55,7 @@ function loadSearch(){
 		var useCurrent = window.localStorage.getItem("use-current");
 		//if(miles != null){$('.js-distance').val(miles);}else{$('.js-distance').val(10);}
 		// $('.js-rent').val(price);
-	 //     $('.js-deposit').val(deposit);
+	      $('.js-deposit').val(deposit);
 	   
 	 //    if (useCurrent === "true"){$('.js-use-loc').prop("checked", true);}
 	 //    else $('.js-zip').val(zipCode);
@@ -70,7 +70,7 @@ function saveSearch( miles, categoryID, price, deposit, zipCode){
 }
 
 function searchWithCurrentLocation(position){
-		//loadSearch();
+		loadSearch();
 		//window.localStorage.setItem("use-current", "true");
 		$('.js-header-search').hide();
 		var searchTerm = $('.js-search').val();
