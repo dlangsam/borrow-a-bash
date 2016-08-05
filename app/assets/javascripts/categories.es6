@@ -14,7 +14,7 @@ $(document).on("turbolinks:load", function(){
 		}
 	});
 	$('.js-search-btn').on('click', function(){
-		alert("Hello"); console.log("Hello");
+
 		var searchTerm = $('.js-search').val();
 		var miles = $('.js-distance').val();
 		var catId = $('.js-cat-id').data("id");
@@ -23,11 +23,15 @@ $(document).on("turbolinks:load", function(){
 		var miles = $('.js-distance').val();
 		var zip = $('.js-zip').val();
 		var isChecked = $('.js-use-loc').prop("checked");
+
+
 		saveSearch(miles, catId, maxPrice, maxDeposit, zip);
 		
 		if(isChecked){
+			alert("Is checked"); 
 			getLocationQuickly();		
 		}else{ 
+			alert("not checked");
 			//window.localStorage.setItem("use-current", "false");
 			//window.localStorage.setItem("search-term", searchTerm);
 			var apiUrl ="/api/categories"  + "?category=" + catId + "&miles=" + encodeURI(miles) + "&zip="
