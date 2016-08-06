@@ -25,13 +25,10 @@ $(document).on("turbolinks:load", function(){
 		var isChecked = $('.js-use-loc').prop("checked");
 
 
-		saveSearch(miles, catId, maxPrice, maxDeposit, zip);
-		
+ 		
 		if(isChecked){
-			alert("Is checked"); 
 			getLocationQuickly();		
 		}else{ 
-			alert("not checked");
 			//window.localStorage.setItem("use-current", "false");
 			//window.localStorage.setItem("search-term", searchTerm);
 			var apiUrl ="/api/categories"  + "?category=" + catId + "&miles=" + encodeURI(miles) + "&zip="
@@ -53,6 +50,7 @@ $(document).on("turbolinks:load", function(){
 	})
 })
 function loadSearch(){
+
 		var miles = window.localStorage.getItem("miles");
 		var price = window.localStorage.getItem("price");
 		var deposit = window.localStorage.getItem("deposit");
@@ -66,6 +64,7 @@ function loadSearch(){
 	 //    else $('.js-zip').val(zipCode);
 }
 function saveSearch( miles, categoryID, price, deposit, zipCode){
+	//TODO use a try catch
 	window.localStorage.setItem("miles", miles);
 	window.localStorage.setItem("categoryID", categoryID);
 	window.localStorage.setItem("price", price);

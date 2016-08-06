@@ -30,6 +30,8 @@ class CategoriesApiController < ApplicationController
 		zip_code = params[:zip]
 		if zip_code != nil
 			puts "--------------------------This is your zip #{zip_code}"
+			#TODO
+			#save zip codes low level cache
 			coords = Geocoder.search(zip_code).first.coordinates
 			lat = coords[0]
 			lng = coords[1]
