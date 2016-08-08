@@ -9,10 +9,19 @@ class User < ApplicationRecord
   geocoded_by :address
   after_validation :geocode
 
+  def self.get_zip_code_coords(zip_code)
+      coords = 
+        Rails.cache.fetch("#{zip_code}/coords", expires_in: 12.hours) do
+          puts "----------------------Calculating zip"
+            Geocoder.search(zip_code).first.coordinates
+        end
+  end
+
   def self.nearby_items_by_cat(id, coords, search_term, deposit, price, distance = 50)
     tempUser = User.new(latitude: coords[0], longitude: coords[1])
     items = tempUser.nearby_items_by_cat(id, coords, search_term, deposit, price, distance)
   end
+
 
   # refactor to use something lie this
    # ItemCategory.where(item_id: u.nearby_items.pluck(:id), category_id: 3).includes(:item).map(&:item).uniq
@@ -77,4 +86,7 @@ class User < ApplicationRecord
     }
 
   end
+
+ 
+
 end
