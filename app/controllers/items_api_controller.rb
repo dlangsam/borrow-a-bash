@@ -49,8 +49,7 @@ class ItemsApiController < ApplicationController
 		
 		zip_code = params[:zip]
 		if zip_code != nil
-			puts "--------------------------This is your zip #{zip_code}"
-			coords = Geocoder.search(zip_code).first.coordinates
+			coords = User.get_zip_code_coords(zip_code)
 			lat = coords[0]
 			lng = coords[1]
 		end
