@@ -48,7 +48,7 @@ class ItemsApiController < ApplicationController
 		lng = params[:lng].to_f
 		
 		zip_code = params[:zip]
-		if zip_code != nil
+		if zip_code != nil && lat != nil && lng != nil
 			coords = User.get_zip_code_coords(zip_code)
 			lat = coords[0]
 			lng = coords[1]

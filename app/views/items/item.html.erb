@@ -6,7 +6,11 @@
 
 <div class = "listing row">
 <span class = "back-link">
-<%= link_to 'Back to all items', :back %>
+<%if @category%>
+	<%= link_to 'Back to all items', category_url(@category) %>
+<%else%>
+	<%= link_to 'Back to all items', category_url %>
+<%end%>
 </span>
 </div>
 <div class = "white row">

@@ -44,6 +44,7 @@ class ItemsController < ApplicationController
 	end
 
 	def item
+		@category = session[:category]
 		@item = Item.find_by(id: params[:id])
 		@map_url = @item.generate_map
 	end

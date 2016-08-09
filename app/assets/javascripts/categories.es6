@@ -74,7 +74,7 @@ function saveSearch( miles, categoryID, price, deposit, zipCode){
 }
 
 function searchWithCurrentLocation(position){
-		loadSearch();
+		//loadSearch();
 		//window.localStorage.setItem("use-current", "true");
 		$('.js-header-search').hide();
 		var searchTerm = $('.js-search').val();

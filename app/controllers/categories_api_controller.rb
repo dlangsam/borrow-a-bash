@@ -3,8 +3,10 @@ class CategoriesApiController < ApplicationController
 		category = params[:category]
 		if category != ""
 		  category = category.to_i
+		  session[:category] = category
 		else 
 			category = nil
+			session[:category] = nil
 		end	
 		deposit = params[:deposit]
 		if deposit != ""

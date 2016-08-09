@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 		patch "/items/:id/change_activation", to: "items_api#change_published"
 		get "/categories", to: "categories_api#show"
 		resources :users, controller: "users_api", only: [] do
-			resources :items, controller: "items_api" 
+			resources :items, controller: "items_api", only: [] 
 		end
 	end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
