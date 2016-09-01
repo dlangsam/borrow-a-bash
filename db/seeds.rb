@@ -28,37 +28,37 @@ food = Category.find_or_create_by(name: "Food & Drink")
 electronics = Category.find_or_create_by(name: "Electronics")
 kids = Category.find_or_create_by(name: "Kids")
 
-categories_array = [furniture,
-			  entertainment,
-			  decorations,
-			  food,
-			  electronics,
-			  kids]
+# categories_array = [furniture,
+# 			  entertainment,
+# 			  decorations,
+# 			  food,
+# 			  electronics,
+# 			  kids]
 
-zips = [33145, 33418, 33101, 33116, 33113, 33136, 33132,
- 33135,33134, 33157, 33301, 33139, 33327, 33330]
-i = 0
-while( i < 20)
-	zip_index = Faker::Number.between(0, zips.length - 1)
-	u = User.create!(username: Faker::Internet.user_name,
-	email: Faker::Internet.email,
-	first_name: Faker::Name.first_name,
-	password: "password",
- 	password_confirmation: "password",
- 	zip_code: zips[zip_index]
-	)
-	item = 0
-	while(item < 4)
-		 index = Faker::Number.between(0, 5)
-		 item1 = Item.create(name: Faker::Commerce.product_name, 
-		 	description: Faker::Hipster.paragraph, 
-		 	deposit: Faker::Number.between(0, 60), price: Faker::Number.between(0,20) )
-		 item1.categories.push(categories_array[index])
-		 u.items.push(item1)
-		 item +=1
-	end
-	i +=1
-end
+# zips = [33145, 33418, 33101, 33116, 33113, 33136, 33132,
+#  33135,33134, 33157, 33301, 33139, 33327, 33330]
+# i = 0
+# while( i < 20)
+# 	zip_index = Faker::Number.between(0, zips.length - 1)
+# 	u = User.create!(username: Faker::Internet.user_name,
+# 	email: Faker::Internet.email,
+# 	first_name: Faker::Name.first_name,
+# 	password: "password",
+#  	password_confirmation: "password",
+#  	zip_code: zips[zip_index]
+# 	)
+# 	item = 0
+# 	while(item < 4)
+# 		 index = Faker::Number.between(0, 5)
+# 		 item1 = Item.create(name: Faker::Commerce.product_name, 
+# 		 	description: Faker::Hipster.paragraph, 
+# 		 	deposit: Faker::Number.between(0, 60), price: Faker::Number.between(0,20) )
+# 		 item1.categories.push(categories_array[index])
+# 		 u.items.push(item1)
+# 		 item +=1
+# 	end
+# 	i +=1
+# end
 
 
 
