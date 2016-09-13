@@ -85,6 +85,11 @@ button.homepage{
 		background-image: url("bartender.jpg");
 
 	}
+	.bumper{
+		height:40px;
+		background-color: $light-gray;
+		visibility: visible;
+	}
 }
 
 .homepage-content > h2{
