@@ -8,17 +8,22 @@ html, p, div{
 h1, h2, h3, h4, h5, h6{
 	font-family: Lao MN, Helvetica, sans-serif;
 }
+.search-div{
+	position: relative;
+	top: -300px;
+}
+
 
 .homepage-content{
 	position: relative;
 	top: -15px;
 	height: 400px;
 	padding: 5px;
-	background-image: url("balloon_sky.jpeg");
 	width: 100%;
 	background-size: cover;
 
 }
+
 button.homepage{
 	position: relative;
 	height: 34px;
@@ -28,19 +33,60 @@ button.homepage{
 	background-color: $happy-green;
 
 }
-@media screen and (min-width: 800px){
-	.homepage-content{
-		background-image: url("outdoor_party.jpeg");
-	}
-	button.homepage{
-		border-color: $celebration-blue;
-		background-color: $celebration-blue;
-
-	}
-
-
+.bumper, .carousel-indicators{
+	visibility:hidden;
+}
+.carousel-inner{
+	visibility:hidden;
+	overflow:hidden;
+	height: 0px;
+}
+.car-image0, .car-image1, .car-image2{
+	background-image: url("balloon_sky.jpeg");
 
 }
+
+
+
+@media screen and (min-width: 800px){
+
+	button.homepage{
+	position: relative;
+	height: 34px;
+	top: 17px;
+	left: 310px;
+	border-color: $celebration-blue;
+	background-color: $celebration-blue;
+
+}
+	.mobile-inner{
+		visibility: hidden;
+		overflow:hidden;
+		height: 0px;
+	}
+
+	 .carousel-indicators{
+	 	visibility:visible;
+	 }
+	 .carousel-inner{
+		visibility:visible;
+		height: 400px;
+
+	}
+	.car-image0{
+		background-image: url("outdoor_party.jpeg");
+
+	}
+	.car-image1{
+		background-image: url("tea_party3.jpeg");
+
+	}
+	.car-image2{
+		background-image: url("bartender.jpg");
+
+	}
+}
+
 .homepage-content > h2{
 	position: relative;
 	top: 80px;
@@ -65,13 +111,14 @@ input.homepage{
 	width: 100%;
 	overflow: scroll;
 	background-color: $light-gray;
-	padding: 15px;
+	//margin: 0 15px;
 	background-size: cover;
 	border-style: solid;
 	border-width: 1px 0 0;
 	border-color: $dark-gray;
 
 }
+
 
 
 .btn-blue{
@@ -156,7 +203,4 @@ div.white{
 	padding: 3px;
 }
 
-.bumper{
-	background-color: $light-gray;
-	height: 40px;
-}
+

@@ -1,0 +1,9 @@
+<h2>Plan a party with what's nearby.</h2>
+<form class="form" action = "/categories">
+    <div class = "search">
+    	<span>
+      		<input type="text" class="form-control js-search homepage" name = "search_word" placeholder="What do you need for your party?" value = "<%= @search_term if @search_term%>">
+        	<button class="btn btn-default btn-blue homepage">Search</button>
+        </span>
+     </div>
+</form>

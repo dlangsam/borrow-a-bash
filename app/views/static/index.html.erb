@@ -1,19 +1,63 @@
-
+<!-- 
 
 <div class = "row">
-	<div class = "homepage-content">
-		<h2>Plan a party with what's nearby.</h2>
-		<form class="form" action = "/categories">
-      	<div class = "search">
-		<span>
-          <input type="text" class="form-control js-search homepage" name = "search_word" placeholder="What do you need for your party?" value = "<%= @search_term if @search_term%>">
-       
-        <button class="btn btn-default btn-blue homepage">Search</button>
-        </span>
-        </div>
-      </form>
+	
+</div> -->
 
-	</div>
+<div class = "row">
+  <div>
+
+
+
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+  
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+  
+  
+     <!-- Wrapper for slides -->
+  <div>
+    <div class="carousel-inner" role="listbox">
+      <div class="item car-image0 active homepage-content">
+          <%= render("shared/homepage_search") %>
+      </div>
+      <div class="item car-image1 homepage-content">
+        <%= render("shared/homepage_search") %>
+     </div>
+     <div class="item car-image2 homepage-content">
+       <%= render("shared/homepage_search") %>
+      </div>
+  
+     
+     
+
+    </div>
+    <div class="mobile-inner">
+    <div class="item car-image0 homepage-content">
+          <%= render("shared/homepage_search") %>
+      </div>
+    </div>
+   </div>
+
+
+   
+ 
+  
+
+  <!-- Controls -->
+  <!-- <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a> -->
+  </div>
+  </div>
 </div>
-
 
