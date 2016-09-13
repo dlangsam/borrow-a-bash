@@ -33,7 +33,7 @@ button.homepage{
 	background-color: $happy-green;
 
 }
-.bumper, .carousel-indicators{
+ .carousel-indicators{
 	visibility:hidden;
 }
 .carousel-inner{
@@ -85,11 +85,7 @@ button.homepage{
 		background-image: url("bartender.jpg");
 
 	}
-	.bumper{
-		height:40px;
-		background-color: $light-gray;
-		visibility: visible;
-	}
+	
 }
 
 .homepage-content > h2{
@@ -99,6 +95,14 @@ button.homepage{
 	color: white;
 
 
+}
+.page.row{
+	background-color: $light-gray;
+}
+.bumper{
+	height:50px;
+	background-color: $light-gray;
+		
 }
 
 
@@ -117,10 +121,11 @@ input.homepage{
 	overflow: scroll;
 	background-color: $light-gray;
 	//margin: 0 15px;
+	top: -8px;
 	background-size: cover;
-	border-style: solid;
-	border-width: 1px 0 0;
-	border-color: $dark-gray;
+	//border-style: solid;
+	//border-width: 1px 0 0;
+	//border-color: $dark-gray;
 
 }
 
