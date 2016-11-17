@@ -16,7 +16,7 @@ h1, h2, h3, h4, h5, h6{
 
 .homepage-content{
 	position: relative;
-	top: -15px;
+	
 	height: 400px;
 	padding: 5px;
 	width: 100%;
@@ -118,7 +118,7 @@ input.homepage{
 	position:relative;
 	display: inline-block;
 	width: 100%;
-	overflow: scroll;
+	
 	background-color: $light-gray;
 	//margin: 0 15px;
 	top: -8px;

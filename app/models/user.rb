@@ -6,8 +6,7 @@ class User < ApplicationRecord
   has_many :items
   has_many :inbound_messages, foreign_key: :recipient_id, class_name: "Message"
   has_many :outbound_messages, foreign_key: :sender_id, class_name: "Message"
-  geocoded_by :address
-  after_validation :geocode
+ 
 
   def self.get_zip_code_coords(zip_code)
       coords = 
