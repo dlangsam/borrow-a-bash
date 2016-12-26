@@ -26,7 +26,7 @@ $(document).on("turbolinks:load", function(){
 
 
  		
-		if(isChecked){
+		if(false && isChecked){
 			getLocationQuickly();		
 		}else{ 
 			//window.localStorage.setItem("use-current", "false");
@@ -146,6 +146,11 @@ function updateSearchItems(response){
 function updateMap(response, distance){
 	var coords = {lat:  response.location.lat , lng: response.location.lng};
 	initMapByCoords(coords);
+
+	//because geolocation is turned off update the cookie
+	document.cookie = `lat=${coords.lat}`;
+  	document.cookie = `lng=${coords.lng}`;
+
 	response.items.forEach(function(item){
 		var marker = new google.maps.Marker({
    		position: {lat: item.user.latitude, lng: item.user.longitude},
@@ -194,24 +199,30 @@ function getCookie(cname) {
     return "";
 }
 function getLocationQuickly(){
-if ($('.js-begin-category-search').length > 0){
-	var options = {timeout: 10000000};
-	var lat = getCookie("lat");
-	var lng = getCookie("lng");
-	if(lat && lng){
+	if ($('.js-begin-category-search').length > 0){
+		var options = {timeout: 10000000};
+		var lat = getCookie("lat");
+		var lng = getCookie("lng");
+		if(!(lat && lng)){
+			lat = 25.7660581;
+			lng = -80.1983439;
+		}
 		var coords = {lat: parseFloat(lat), lng: parseFloat(lng)};
-		searchWithCurrentLocation(coords)
+		searchWithCurrentLocation(coords);
+		// if(lat && lng){
+		// 		var coords = {lat: parseFloat(lat), lng: parseFloat(lng)};
+		// 	searchWithCurrentLocation(coords);
 
-	}else{
- 		navigator.geolocation.getCurrentPosition( 
-				function(location){
-					setGeoCookie(location);
-					searchWithCurrentLocation(positionToCoords(location));
-				},function(error){
-					"Location unavailable"
-				},options)
- 	}
- }
+		// }else{
+	 // 		navigator.geolocation.getCurrentPosition( 
+		// 			function(location){
+		// 				// setGeoCookie(location);
+		// 				searchWithCurrentLocation(positionToCoords(location));
+		// 			},function(error){
+		// 				"Location unavailable"
+		// 			},options)
+	 // 	}
+	 }
 }
 
 

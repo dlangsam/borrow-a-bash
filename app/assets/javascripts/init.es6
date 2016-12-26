@@ -7,17 +7,17 @@ BorrowABashApp.init = function(){
 
 $(document).on("turbolinks:load", function(){
 
-	if("geolocation" in navigator){
-		console.log("Broswer has geolocation");
-		var options = {timeout: 10000000};
-		navigator.geolocation.getCurrentPosition(getGeoLocation, handleError, options);
-	}else{
-		var html = `
-		<h2>Update your browser. </h2>
-		`;
-		$("body").append(html);
-		console.log("Browser doesn't have geolation");
-	}
+	// if("geolocation" in navigator){
+	// 	console.log("Broswer has geolocation");
+	// 	var options = {timeout: 10000000};
+	// 	navigator.geolocation.getCurrentPosition(getGeoLocation, handleError, options);
+	// }else{
+	// 	var html = `
+	// 	<h2>Update your browser. </h2>
+	// 	`;
+	// 	$("body").append(html);
+	// 	console.log("Browser doesn't have geolation");
+	// }
 	BorrowABashApp.init();
 	//if (/^\/categories/.test(window.location.pathname) { // do stuff here }`
 	//FIXME!!!!!!
@@ -38,7 +38,7 @@ $(document).on("turbolinks:load", function(){
     /* ... */ }
 }
 });
-
+// 
 function getGeoLocation(position) {
   setGeoCookie(position);
 }
