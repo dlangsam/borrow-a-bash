@@ -27,12 +27,12 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-gem "twitter-bootstrap-rails"
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 gem 'material_icons'
 gem 'geocoder'
 gem 'sprockets'
 gem 'sprockets-es6', require: "sprockets/es6"
-gem "paperclip", "~> 4.3"
+gem "paperclip", "~> 5.2.0s"
 gem 'aws-sdk', '< 2.0'
 gem 'figaro'
 gem 'faker'
