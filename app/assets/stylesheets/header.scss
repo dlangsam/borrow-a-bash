@@ -4,7 +4,15 @@
 	border-style:none;
 	background-color: white;
 }
-
+.container-fluid{
+  padding-right: 0px;
+  padding-left: 0px;
+}
+.white-header{
+  padding-right: 15px;
+  padding-left: 15px;
+  background-color: white;
+}
 .navbar-right{
 	position: relative;
 	right: -20px;
